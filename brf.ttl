@@ -1,0 +1,28 @@
+@prefix brf: <http://british-royal-family.org/> .
+@prefix fam: <http://familyrelations.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+brf:elizabeth rdf:type brf:Queen ;
+              foaf:name "Elizabeth Alexandra Mary" ;
+              brf:regnalNumber "II" ;
+              brf:title "Her Majesty the Queen" ;
+              fam:spouseOf brf:philip .
+brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
+           foaf:name "Philip Mountbatten" .
+brf:elizabeth fam:hasSon brf:charles ,
+                         brf:andrew ,
+                         brf:edward ;
+              fam:hasDaughter brf:anna .
+brf:charles fam:hasSon brf:william ,
+                       brf:harry ;
+            fam:spouseOf brf:camilla .
+brf:william fam:hasSon brf:george ;
+            fam:hasSon brf:louis ;
+            fam:hasDaughter brf:charlotte ;
+            fam:spouseOf brf:catherine .
+brf:george brf:title "His Royal Highness Prince George of Cambridge" ;
+           foaf:name "George Alexander Louis" .
+brf:charles rdf:type brf:ImmediateLineSuccessor .
+brf:william rdf:type brf:ImmediateLineSuccessor .
+brf:george rdf:type brf:ImmediateLineSuccessor .
