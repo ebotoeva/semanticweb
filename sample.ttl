@@ -1,7 +1,8 @@
-@prefix brf: <http://british-royal-family.org/> .
-@prefix fam: <http://familyrelations.com/> .
 
-brf:elizabeth fam:hasSon brf:charles ,
-                         brf:andrew ,
-                         brf:edward ;
-              fam:hasDaughter brf:anna .
+@prefix :          <http://example.org/book/> .
+
+
+:elizabeth :hasSon :charles ,
+                         :andrew ,
+                         :edward ;
+              :hasDaughter :anna .
