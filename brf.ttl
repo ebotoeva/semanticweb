@@ -2,27 +2,143 @@
 @prefix fam: <http://familyrelations.com/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <http://british-royal-family.org/> .
 
 brf:elizabeth rdf:type brf:Queen ;
               foaf:name "Elizabeth Alexandra Mary" ;
               brf:regnalNumber "II" ;
               brf:title "Her Majesty the Queen" ;
-              fam:spouseOf brf:philip .
-brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
-           foaf:name "Philip Mountbatten" .
-brf:elizabeth fam:hasSon brf:charles ,
+              fam:hasSon brf:charles ,
                          brf:andrew ,
                          brf:edward ;
-              fam:hasDaughter brf:anna .
-brf:charles fam:hasSon brf:william ,
+              fam:hasDaughter brf:anna ;
+	      fam:spouseOf brf:philip ;
+	      dbpedia:birthYear 1926 .	      
+brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
+           foaf:name "Philip Mountbatten" .
+           fam:hasSon brf:charles ,
+           	      brf:andrew ,
+                      brf:edward ;
+	   fam:hasDaughter brf:anna ;
+	   fam:spouseOf brf:elizabeth ;
+	   dbpedia:birthYear 1921 ;
+	   dbpedia:deathYear 2021 .
+brf:charles foaf:name "Charles Philip Arthur George" ;
+	    rdf:type brf:ImmediateLineSuccessor ;
+	    brf:title "His Royal Highness The Prince of Wales" ,
+	    	      "Duke of Edinburgh" ,
+		      "Duke of Cornwall" ;
+            fam:hasSon brf:william ,
                        brf:harry ;
-            fam:spouseOf brf:camilla .
-brf:william fam:hasSon brf:george ;
-            fam:hasSon brf:louis ;
+            fam:spouseOf brf:camilla ;
+	    fam:exSpouseOf brf:diana ;
+	    dbpedia:birthYear 1948 .
+brf:camilla foaf:name "Camilla Parker Bowles" ;
+	    brf:title "Duchess of Cornwall" ;
+	    fam:spouseOf brf:charles ;
+	    dbpedia:birthYear 1947 .
+brf:diana foaf:name "Diana Frances Spencer " ;
+	  brf:title "Princess of Wales" ;
+          fam:hasSon brf:william ,
+                     brf:harry ;
+	  fam:exSpouseOf brf:charles ;
+	  dbpedia:birthYear 1961 ;
+	  dbpedia:deathYear 1997 .
+brf:anne foaf:name "Anne Elizabeth Alice Louise" ;
+	 brf:title "Her Royal Highness The Princess Royal" ;
+	 fam:hasSon brf:peter ;
+	 fam:hasDaughter brf:zara ;
+	 fam:spouseOf brf:timothy ;
+	 fam:exSpouseOf brf:mark ;
+	 dbpedia:birthYear 1950 .
+brf:andrew foaf:name "Andrew Albert Christian Edward" ;
+	   brf:title "His Royal Highness The Duke of York" ;
+	   fam:exSpouseOf brf:sarah ;
+	   fam:hasDaughter brf:beatrice ,
+	   		   brf:eugenie ;
+	   dbpedia:birthYear 1960 .
+brf:edward foaf:name "Edward Antony Richard Louis" ;
+	   brf:title "His Royal Highness The Earl of Wessex" ;
+	   fam:hasDaughter brf:louise ;
+	   fam:hasSon brf:james ;
+	   fam:spouseOf brf:sophie ;
+	   dbpedia:birthYear 1964 .
+brf:william foaf:name "William Arthur Philip Louis" ;
+	    rdf:type brf:ImmediateLineSuccessor ;
+	    brf:title "His Royal Higness The Duke of Cambridge" ; 
+	    fam:hasSon brf:george ;
             fam:hasDaughter brf:charlotte ;
-            fam:spouseOf brf:catherine .
-brf:george brf:title "His Royal Highness Prince George of Cambridge" ;
-           foaf:name "George Alexander Louis" .
-brf:charles rdf:type brf:ImmediateLineSuccessor .
-brf:william rdf:type brf:ImmediateLineSuccessor .
-brf:george rdf:type brf:ImmediateLineSuccessor .
+            fam:hasSon brf:louis ;
+            fam:spouseOf brf:catherine ;
+	    dbpedia:birthYear 1982 .
+brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
+	      brf:title "Her Royal Highness The Duchess of Cambridge" ;
+	      fam:hasSon brf:george ;
+              fam:hasDaughter brf:charlotte ;
+              fam:hasSon brf:louis ;
+              fam:spouseOf brf:william ;
+	      dbpedia:birthYear 1982 .
+brf:harry foaf:name "Henry Charles Albert David" ;
+	  brf:title "His Royal Higness The Duke of Sussex" ; 
+	  fam:hasSon brf:archie ;
+          fam:hasDaughter brf:lilibet ;
+          fam:spouseOf brf:meghan ;
+	  dbpedia:birthYear 1984 .
+brf:meghan foaf:name "Rachel Meghan Markle" ;
+	  brf:title "Duchess of Sussex" ; 
+	  fam:hasSon brf:archie ;
+          fam:hasDaughter brf:lilibet ;
+          fam:spouseOf brf:harry ;
+	  dbpedia:birthYear 1981 .
+brf:peter foaf:name "Peter Mark Andrew Phillips" ;
+	  fam:hasDaughter brf:savannah ,
+	  		  brf:isla ;
+	  fam:exSpouseOf brf:autumn ;
+          dbpedia:birthYear 1977 .
+brf:zara foaf:name "Zara Anne Elizabeth Tindall" ;
+	 fam:hasDaughter brf:mia ,
+	 		 brf:lena ;
+	 fam:hasSon brf:lucas ;
+	 fam:spouseOf brf:mike ;
+         dbpedia:birthYear 1981 .
+brf:beatrice foaf:name "Beatrice Elizabeth Mary" ;
+	     brf:title "Her Royal Highness Princess Beatrice" ;
+	     fam:hasDaughter brf:sienna ;
+	     fam:spouseOf brf:edoardo ;
+             dbpedia:birthYear 1988 .
+brf:eugenie foaf:name "Eugenie Victoria Helena" ;
+	    brf:title "Her Royal Highness Princess Eugenie" ;
+	    fam:hasSon brf:august ;
+	    fam:spouseOf brf:jack ;
+            dbpedia:birthYear 1990 .   
+brf:louise foaf:name "Louise Alice Elizabeth Mary Mountbatten-Windsor" ;
+	   brf:title "Lady Louise Mountbatten-Windsor" ;
+           dbpedia:birthYear 2003 .	    
+brf:james foaf:name "James Alexander Philip Theo Mountbatten-Windsor" ;
+	  brf:title "Viscount Severn" ;
+          dbpedia:birthYear 2007 .
+	  
+brf:george foaf:name "George Alexander Louis" ;
+	   rdf:type brf:ImmediateLineSuccessor ;
+	   brf:title "His Royal Highness Prince George of Cambridge" ;
+           dbpedia:birthYear 2013 .
+brf:charlotte foaf:name "Charlotte Elizabeth Diana" ;
+	      brf:title "Her Royal Highness Princess Charlotte of Cambridge" ;
+              dbpedia:birthYear 2015 .
+brf:louis foaf:name "Louis Arthur Charles" ;
+	  brf:title "His Royal Highness Prince Louis of Cambridge" ;
+	  dbpedia:birthYear 2018 .
+brf:savannah foaf:name "Savannah Anne Kathleen Phillips" ;
+	     dbpedia:birthYear 2010 .
+brf:isla foaf:name "Isla Elizabeth Phillips" ;
+	 dbpedia:birthYear 2012 .
+brf:mia foaf:name "Mia Grace Tindall" ;
+	dbpedia:birthYear 2014 .
+brf:lena foaf:name "Lena Elizabeth Tindall" ;
+	 dbpedia:birthYear 2018 .
+brf:lucas foaf:name "Lucas Phillip Tindall" ;
+	  dbpedia:birthYear 2021 .
+brf:sienna foaf:name "Sienna Elizabeth Mapelli Mozzi" ;
+	   dbpedia:birthYear 2021 .
+brf:august foaf:name "August Philip Brooksbank" ;
+	   dbpedia:birthYear 2021 .
