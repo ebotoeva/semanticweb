@@ -45,7 +45,7 @@ brf:diana foaf:name "Diana Frances Spencer " ;
 	  fam:exSpouseOf brf:charles ;
 	  dbpedia:birthYear 1961 ;
 	  dbpedia:deathYear 1997 .
-brf:anne foaf:name "Anne Elizabeth Alice Louise" ;
+brf:anna foaf:name "Anne Elizabeth Alice Louise" ;
 	 brf:title "Her Royal Highness The Princess Royal" ;
 	 fam:hasSon brf:peter ;
 	 fam:hasDaughter brf:zara ;
