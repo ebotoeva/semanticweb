@@ -2,7 +2,7 @@
 @prefix fam: <http://familyrelations.com/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dbpedia: <http://dbpedia.org/ontology/>
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
 @prefix : <http://british-royal-family.org/> .
 
 brf:elizabeth rdf:type brf:Queen ;
@@ -16,7 +16,7 @@ brf:elizabeth rdf:type brf:Queen ;
 	      fam:spouseOf brf:philip ;
 	      dbpedia:birthYear 1926 .	      
 brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
-           foaf:name "Philip Mountbatten" .
+           foaf:name "Philip Mountbatten" ;
            fam:hasSon brf:charles ,
            	      brf:andrew ,
                       brf:edward ;
