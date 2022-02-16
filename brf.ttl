@@ -2,6 +2,7 @@
 @prefix fam: <http://familyrelations.com/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/>
 @prefix : <http://british-royal-family.org/> .
 
 brf:elizabeth rdf:type brf:Queen ;
