@@ -13,6 +13,10 @@ brf:elizabeth rdf:type brf:Queen ;
                          brf:andrew ,
                          brf:edward ;
               fam:hasDaughter brf:anna ;
+              fam:hasChild brf:charles ,
+                           brf:andrew ,
+                           brf:edward ,
+              		   brf:anna ;
 	      fam:spouseOf brf:philip ;
 	      dbpedia:birthYear 1926 .	      
 brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
@@ -21,6 +25,10 @@ brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
            	      brf:andrew ,
                       brf:edward ;
 	   fam:hasDaughter brf:anna ;
+           fam:hasChild brf:charles ,
+                        brf:andrew ,
+                        brf:edward ,
+       		   	brf:anna ;
 	   fam:spouseOf brf:elizabeth ;
 	   dbpedia:birthYear 1921 ;
 	   dbpedia:deathYear 2021 .
@@ -31,6 +39,8 @@ brf:charles foaf:name "Charles Philip Arthur George" ;
 		      "Duke of Cornwall" ;
             fam:hasSon brf:william ,
                        brf:harry ;
+            fam:hasChild brf:william ,
+                       	 brf:harry ;
             fam:spouseOf brf:camilla ;
 	    fam:exSpouseOf brf:diana ;
 	    dbpedia:birthYear 1948 .
@@ -42,6 +52,8 @@ brf:diana foaf:name "Diana Frances Spencer " ;
 	  brf:title "Princess of Wales" ;
           fam:hasSon brf:william ,
                      brf:harry ;
+          fam:hasChild brf:william ,
+                       brf:harry ;
 	  fam:exSpouseOf brf:charles ;
 	  dbpedia:birthYear 1961 ;
 	  dbpedia:deathYear 1997 .
@@ -49,6 +61,8 @@ brf:anna foaf:name "Anne Elizabeth Alice Louise" ;
 	 brf:title "Her Royal Highness The Princess Royal" ;
 	 fam:hasSon brf:peter ;
 	 fam:hasDaughter brf:zara ;
+	 fam:hasChild brf:peter ,
+	 	      brf:zara ;
 	 fam:spouseOf brf:timothy ;
 	 fam:exSpouseOf brf:mark ;
 	 dbpedia:birthYear 1950 .
@@ -57,11 +71,15 @@ brf:andrew foaf:name "Andrew Albert Christian Edward" ;
 	   fam:exSpouseOf brf:sarah ;
 	   fam:hasDaughter brf:beatrice ,
 	   		   brf:eugenie ;
+	   fam:hasChild brf:beatrice ,
+	   		brf:eugenie ;
 	   dbpedia:birthYear 1960 .
 brf:edward foaf:name "Edward Antony Richard Louis" ;
 	   brf:title "His Royal Highness The Earl of Wessex" ;
 	   fam:hasDaughter brf:louise ;
 	   fam:hasSon brf:james ;
+	   fam:hasChild brf:louise ,
+	   		brf:james ;
 	   fam:spouseOf brf:sophie ;
 	   dbpedia:birthYear 1964 .
 brf:william foaf:name "William Arthur Philip Louis" ;
@@ -70,6 +88,9 @@ brf:william foaf:name "William Arthur Philip Louis" ;
 	    fam:hasSon brf:george ;
             fam:hasDaughter brf:charlotte ;
             fam:hasSon brf:louis ;
+	    fam:hasChild brf:george ,
+            		 brf:charlotte ,
+            		 brf:louis ;
             fam:spouseOf brf:catherine ;
 	    dbpedia:birthYear 1982 .
 brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
@@ -77,39 +98,53 @@ brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
 	      fam:hasSon brf:george ;
               fam:hasDaughter brf:charlotte ;
               fam:hasSon brf:louis ;
+	      fam:hasChild brf:george ,
+            		   brf:charlotte ,
+            		   brf:louis ;
               fam:spouseOf brf:william ;
 	      dbpedia:birthYear 1982 .
 brf:harry foaf:name "Henry Charles Albert David" ;
 	  brf:title "His Royal Higness The Duke of Sussex" ; 
 	  fam:hasSon brf:archie ;
           fam:hasDaughter brf:lilibet ;
+	  fam:hasChild brf:archie ,
+          	       brf:lilibet ;
           fam:spouseOf brf:meghan ;
 	  dbpedia:birthYear 1984 .
 brf:meghan foaf:name "Rachel Meghan Markle" ;
 	  brf:title "Duchess of Sussex" ; 
 	  fam:hasSon brf:archie ;
           fam:hasDaughter brf:lilibet ;
+	  fam:hasChild brf:archie ,
+          	       brf:lilibet ;
           fam:spouseOf brf:harry ;
 	  dbpedia:birthYear 1981 .
 brf:peter foaf:name "Peter Mark Andrew Phillips" ;
 	  fam:hasDaughter brf:savannah ,
 	  		  brf:isla ;
+	  fam:hasChild brf:savannah ,
+	  	       brf:isla ;
 	  fam:exSpouseOf brf:autumn ;
           dbpedia:birthYear 1977 .
 brf:zara foaf:name "Zara Anne Elizabeth Tindall" ;
 	 fam:hasDaughter brf:mia ,
 	 		 brf:lena ;
 	 fam:hasSon brf:lucas ;
+	 fam:hasChild brf:mia ,
+	 	      brf:lena ,
+	 	      brf:lucas ;
 	 fam:spouseOf brf:mike ;
          dbpedia:birthYear 1981 .
 brf:beatrice foaf:name "Beatrice Elizabeth Mary" ;
 	     brf:title "Her Royal Highness Princess Beatrice" ;
 	     fam:hasDaughter brf:sienna ;
+	     fam:hasChild brf:sienna ;
 	     fam:spouseOf brf:edoardo ;
              dbpedia:birthYear 1988 .
 brf:eugenie foaf:name "Eugenie Victoria Helena" ;
 	    brf:title "Her Royal Highness Princess Eugenie" ;
 	    fam:hasSon brf:august ;
+	    fam:hasChild brf:august ;
 	    fam:spouseOf brf:jack ;
             dbpedia:birthYear 1990 .   
 brf:louise foaf:name "Louise Alice Elizabeth Mary Mountbatten-Windsor" ;
@@ -129,6 +164,11 @@ brf:charlotte foaf:name "Charlotte Elizabeth Diana" ;
 brf:louis foaf:name "Louis Arthur Charles" ;
 	  brf:title "His Royal Highness Prince Louis of Cambridge" ;
 	  dbpedia:birthYear 2018 .
+brf:archie foaf:name "Archie Harrison Mountbatten-Windsor" ;
+	   brf:title "Master Archie Harrison Mountbatten-Windsor" ;
+	   dbpedia:birthYear 2019 .
+brf:lilibet foaf:name "Lilibet Diana Mountbatten-Windsor" ;
+	    dbpedia:birthYear 2021 .
 brf:savannah foaf:name "Savannah Anne Kathleen Phillips" ;
 	     dbpedia:birthYear 2010 .
 brf:isla foaf:name "Isla Elizabeth Phillips" ;
