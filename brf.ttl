@@ -124,6 +124,7 @@ brf:william foaf:name "William Arthur Philip Louis" ;
 	    dbpedia:birthYear 1982 .
 	    
 brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
+	      foaf:givenName "Catherine", "Elizabet" ;
 	      brf:title "Her Royal Highness The Duchess of Cambridge" ;
 	      fam:hasSon brf:george ;
               fam:hasDaughter brf:charlotte ;
@@ -134,6 +135,8 @@ brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
               fam:spouseOf brf:william ;
 	      dbpedia:birthYear 1982 .
 brf:harry foaf:name "Henry Charles Albert David" ;
+	  foaf:givenName "Henry", "Charles", "Albert", "David" ;
+	  foaf:familyName "Mountbatten-Windsor" ;
 	  brf:title "His Royal Higness The Duke of Sussex" ; 
 	  fam:hasSon brf:archie ;
           fam:hasDaughter brf:lilibet ;
@@ -142,14 +145,17 @@ brf:harry foaf:name "Henry Charles Albert David" ;
           fam:spouseOf brf:meghan ;
 	  dbpedia:birthYear 1984 .
 brf:meghan foaf:name "Rachel Meghan Markle" ;
-	  brf:title "Duchess of Sussex" ; 
-	  fam:hasSon brf:archie ;
-          fam:hasDaughter brf:lilibet ;
-	  fam:hasChild brf:archie ,
-          	       brf:lilibet ;
-          fam:spouseOf brf:harry ;
-	  dbpedia:birthYear 1981 .
+	   foaf:givenName "Rachel", "Meghan" ;
+	   brf:title "Duchess of Sussex" ; 
+	   fam:hasSon brf:archie ;
+           fam:hasDaughter brf:lilibet ;
+	   fam:hasChild brf:archie ,
+          	       	brf:lilibet ;
+           fam:spouseOf brf:harry ;
+	   dbpedia:birthYear 1981 .
 brf:peter foaf:name "Peter Mark Andrew Phillips" ;
+	  foaf:givenName "Peter", "Mark", "Andrew" ;
+	  foaf:familyName "Phillips" ;
 	  fam:hasDaughter brf:savannah ,
 	  		  brf:isla ;
 	  fam:hasChild brf:savannah ,
@@ -157,6 +163,8 @@ brf:peter foaf:name "Peter Mark Andrew Phillips" ;
 	  fam:exSpouseOf brf:autumn ;
           dbpedia:birthYear 1977 .
 brf:zara foaf:name "Zara Anne Elizabeth Tindall" ;
+	 foaf:givenName "Zara", "Anne", "Elizabeth" ;
+	 foaf:familyName "Tindall" ;
 	 fam:hasDaughter brf:mia ,
 	 		 brf:lena ;
 	 fam:hasSon brf:lucas ;
@@ -166,50 +174,80 @@ brf:zara foaf:name "Zara Anne Elizabeth Tindall" ;
 	 fam:spouseOf brf:mike ;
          dbpedia:birthYear 1981 .
 brf:beatrice foaf:name "Beatrice Elizabeth Mary" ;
+	     foaf:givenName "Beatrice", "Elizabeth", "Mary" ;
 	     brf:title "Her Royal Highness Princess Beatrice" ;
 	     fam:hasDaughter brf:sienna ;
 	     fam:hasChild brf:sienna ;
 	     fam:spouseOf brf:edoardo ;
              dbpedia:birthYear 1988 .
 brf:eugenie foaf:name "Eugenie Victoria Helena" ;
+	    foaf:givenName "Eugenie", "Victoria", "Helena" ;
 	    brf:title "Her Royal Highness Princess Eugenie" ;
 	    fam:hasSon brf:august ;
 	    fam:hasChild brf:august ;
 	    fam:spouseOf brf:jack ;
             dbpedia:birthYear 1990 .   
 brf:louise foaf:name "Louise Alice Elizabeth Mary Mountbatten-Windsor" ;
+	   foaf:givenName "Louise", "Alice", "Elizabeth", "Mary" ;
+	   foaf:familyName "Mountbatten-Windsor" ;
 	   brf:title "Lady Louise Mountbatten-Windsor" ;
            dbpedia:birthYear 2003 .	    
 brf:james foaf:name "James Alexander Philip Theo Mountbatten-Windsor" ;
+	  foaf:name "James", "Alexander", "Philip", "Theo" ;
+	  foaf:familyName "Mountbatten-Windsor" ;
 	  brf:title "Viscount Severn" ;
           dbpedia:birthYear 2007 .
 	  
 brf:george foaf:name "George Alexander Louis" ;
+	   foaf:givenName "George", "Alexander", "Louis" ;
+	   foaf:familyName "Mountbatten-Windsor" ;
 	   rdf:type brf:ImmediateLineSuccessor ;
 	   brf:title "His Royal Highness Prince George of Cambridge" ;
            dbpedia:birthYear 2013 .
 brf:charlotte foaf:name "Charlotte Elizabeth Diana" ;
+	      foaf:givenName "Charlotte", "Elizabeth", "Diana" ;
 	      brf:title "Her Royal Highness Princess Charlotte of Cambridge" ;
               dbpedia:birthYear 2015 .
 brf:louis foaf:name "Louis Arthur Charles" ;
+	  foaf:givenName "Louis", "Arthur", "Charles" ;
+	  foaf:familyName "Mountbatten-Windsor" ;
 	  brf:title "His Royal Highness Prince Louis of Cambridge" ;
 	  dbpedia:birthYear 2018 .
 brf:archie foaf:name "Archie Harrison Mountbatten-Windsor" ;
+	   foaf:givenName "Archie", "Harrison" ;
+	   foaf:familyName "Mountbatten-Windsor" ;
 	   brf:title "Master Archie Harrison Mountbatten-Windsor" ;
 	   dbpedia:birthYear 2019 .
 brf:lilibet foaf:name "Lilibet Diana Mountbatten-Windsor" ;
+	    foaf:givenName "Lilibet", "Diana" ;
+	    foaf:familyName "Mountbatten-Windsor" ;
 	    dbpedia:birthYear 2021 .
 brf:savannah foaf:name "Savannah Anne Kathleen Phillips" ;
+	     foaf:givenName "Savannah Anne Kathleen" ;
+	     foaf:familyName "Phillips" ;
 	     dbpedia:birthYear 2010 .
 brf:isla foaf:name "Isla Elizabeth Phillips" ;
+	 foaf:givenName "Isla", "Elizabeth" ;
+	 foaf:familyName "Phillips" ;
 	 dbpedia:birthYear 2012 .
 brf:mia foaf:name "Mia Grace Tindall" ;
+	foaf:givenName "Mia", "Grace" ;
+	foaf:familyName "Tindall" ;
 	dbpedia:birthYear 2014 .
 brf:lena foaf:name "Lena Elizabeth Tindall" ;
+	 foaf:name "Lena", "Elizabeth" ;
+	 foaf:familyName "Tindall" ;
 	 dbpedia:birthYear 2018 .
 brf:lucas foaf:name "Lucas Phillip Tindall" ;
+	  foaf:givenName "Lucas", "Phillip" ;
+	  foaf:familyName "Tindall" ;
 	  dbpedia:birthYear 2021 .
 brf:sienna foaf:name "Sienna Elizabeth Mapelli Mozzi" ;
+	   foaf:givenName "Sienna", "Elizabeth" ;
+	   foaf:familyName "Mapelli Mozzi" ;
 	   dbpedia:birthYear 2021 .
 brf:august foaf:name "August Philip Brooksbank" ;
+	   foaf:givenName "August", "Philip",
+	   foaf:familyName "Brooksbank" ;
 	   dbpedia:birthYear 2021 .
+	   
