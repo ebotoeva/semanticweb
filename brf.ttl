@@ -7,6 +7,8 @@
 
 brf:elizabeth rdf:type brf:Queen ;
               foaf:name "Elizabeth Alexandra Mary" ;
+	      foaf:givenName "Elizabeth", "Alexandra", "Mary" ;
+	      foaf:familyName "Windsor" ;
               brf:regnalNumber "II" ;
               brf:title "Her Majesty the Queen" ;
               fam:hasSon brf:charles ,
@@ -21,6 +23,8 @@ brf:elizabeth rdf:type brf:Queen ;
 	      dbpedia:birthYear 1926 .	      
 brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
            foaf:name "Philip Mountbatten" ;
+	   foaf:givenName "Philip" ;
+	   foaf:familyName "Mountbatten" ;
            fam:hasSon brf:charles ,
            	      brf:andrew ,
                       brf:edward ;
@@ -33,6 +37,8 @@ brf:philip brf:title "His Royal Highness The Prince Philip, Duke of Edinburgh" ;
 	   dbpedia:birthYear 1921 ;
 	   dbpedia:deathYear 2021 .
 brf:charles foaf:name "Charles Philip Arthur George" ;
+	    foaf:givenName "Charles", "Philip", "Arthur", "George" ;
+	    foaf:familyName "Mountbatten-Windsor" ;
 	    rdf:type brf:ImmediateLineSuccessor ;
 	    brf:title "His Royal Highness The Prince of Wales" ,
 	    	      "Duke of Edinburgh" ,
@@ -44,11 +50,13 @@ brf:charles foaf:name "Charles Philip Arthur George" ;
             fam:spouseOf brf:camilla ;
 	    fam:exSpouseOf brf:diana ;
 	    dbpedia:birthYear 1948 .
-brf:camilla foaf:name "Camilla Parker Bowles" ;
+brf:camilla foaf:name "Camilla Rosemary Parker Bowles" ;
+	    foaf:givenName "Camilla", "Rosemary" ;
 	    brf:title "Duchess of Cornwall" ;
 	    fam:spouseOf brf:charles ;
 	    dbpedia:birthYear 1947 .
 brf:diana foaf:name "Diana Frances Spencer " ;
+	  foaf:givenName "Diana", "Frances" ;
 	  brf:title "Princess of Wales" ;
           fam:hasSon brf:william ,
                      brf:harry ;
@@ -58,6 +66,7 @@ brf:diana foaf:name "Diana Frances Spencer " ;
 	  dbpedia:birthYear 1961 ;
 	  dbpedia:deathYear 1997 .
 brf:anna foaf:name "Anne Elizabeth Alice Louise" ;
+	 foaf:givenName "Anne", "Elizabeth", "Alice", "Louise" ;
 	 brf:title "Her Royal Highness The Princess Royal" ;
 	 fam:hasSon brf:peter ;
 	 fam:hasDaughter brf:zara ;
@@ -66,7 +75,16 @@ brf:anna foaf:name "Anne Elizabeth Alice Louise" ;
 	 fam:spouseOf brf:timothy ;
 	 fam:exSpouseOf brf:mark ;
 	 dbpedia:birthYear 1950 .
+brf:timothy foaf:name "Timothy James Hamilton Laurence" ;
+	    foaf:givenName "Timothy", "James", "Hamilton" ;
+	    foaf:familyName "Laurence" .
+brf:mark foaf:name "Mark Anthony Peter Phillips" ;
+	 foaf:givenName "Mark", "Anthony", "Peter" ;
+	 foaf:familyName "Philips" .
+
 brf:andrew foaf:name "Andrew Albert Christian Edward" ;
+	   foaf:givenName "Andrew", "Albert", "Christian", "Edward" ;
+    	   foaf:familyName "Mountbatten-Windsor" ;
 	   brf:title "His Royal Highness The Duke of York" ;
 	   fam:exSpouseOf brf:sarah ;
 	   fam:hasDaughter brf:beatrice ,
@@ -74,7 +92,12 @@ brf:andrew foaf:name "Andrew Albert Christian Edward" ;
 	   fam:hasChild brf:beatrice ,
 	   		brf:eugenie ;
 	   dbpedia:birthYear 1960 .
+brf:sarah foaf:name "Sarah Margaret Ferguson" ;
+	  foaf:givenName "Sarah", "Margaret", "Ferguson" .
+	  
 brf:edward foaf:name "Edward Antony Richard Louis" ;
+	   foaf:givenName "Edward", "Antony", "Richard", "Louis" ;
+	   foaf:familyName "Mountbatten-Windsor" ;
 	   brf:title "His Royal Highness The Earl of Wessex" ;
 	   fam:hasDaughter brf:louise ;
 	   fam:hasSon brf:james ;
@@ -82,7 +105,13 @@ brf:edward foaf:name "Edward Antony Richard Louis" ;
 	   		brf:james ;
 	   fam:spouseOf brf:sophie ;
 	   dbpedia:birthYear 1964 .
+
+brf:sophie  foaf:name "Sophie Helen Rhys-Jones" ;
+	    foaf:givenName "Sophie", "Helen" .
+	    
 brf:william foaf:name "William Arthur Philip Louis" ;
+	    foaf:givenName "William", "Arthur", "Philip", "Louis" ;
+	    foaf:familyName "Mountbatten-Windsor" ;
 	    rdf:type brf:ImmediateLineSuccessor ;
 	    brf:title "His Royal Higness The Duke of Cambridge" ; 
 	    fam:hasSon brf:george ;
@@ -93,6 +122,7 @@ brf:william foaf:name "William Arthur Philip Louis" ;
             		 brf:louis ;
             fam:spouseOf brf:catherine ;
 	    dbpedia:birthYear 1982 .
+	    
 brf:catherine foaf:name "Catherine Elizabeth Middleton" ;
 	      brf:title "Her Royal Highness The Duchess of Cambridge" ;
 	      fam:hasSon brf:george ;
