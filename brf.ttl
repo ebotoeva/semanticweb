@@ -247,7 +247,7 @@ brf:sienna foaf:name "Sienna Elizabeth Mapelli Mozzi" ;
 	   foaf:familyName "Mapelli Mozzi" ;
 	   dbpedia:birthYear 2021 .
 brf:august foaf:name "August Philip Brooksbank" ;
-	   foaf:givenName "August", "Philip",
+	   foaf:givenName "August", "Philip" ;
 	   foaf:familyName "Brooksbank" ;
 	   dbpedia:birthYear 2021 .
 	   
