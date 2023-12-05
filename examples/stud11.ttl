@@ -1,0 +1,1323 @@
+@base <http://elderscrolls.org> .
+@prefix es: <http://elderscrolls.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# The domain this graph represents is the world of the video game Skyrim.
+# Specifically this graph describes major places, individuals who reside in those places
+# and what their relationships and feelings are about their 
+# friends, foes and strangers within the world.
+
+# ---- Geography Related Classes
+
+es:Hold a rdfs:Class .
+es:Place a rdfs:Class .
+
+es:Landmark 
+	a rdfs:Class ; 
+	rdfs:subClassOf es:Place ;
+	rdfs:comment "Any recognisably important natural or artificial structure"@en .
+			
+es:Building 
+	a rdfs:Class ;
+	rdfs:subClassOf es:Landmark ;
+	rdfs:comment "A more specific form of landmark relating to artificial structures that implies habitation"@en .			
+			
+es:Settlement 
+	a rdfs:Class ;
+	rdfs:subClassOf es:Place ;
+	rdfs:comment "Any small to large inhabited place where people have established a community"@en .
+
+es:SmallSettlement 
+	a rdfs:Class ; 
+	rdfs:subClassOf es:Settlement ;
+	rdfs:comment "All settlements with population at or above 10 and below 20 individuals"@en .
+	
+es:MediumSettlement 
+	a rdfs:Class ;
+	rdfs:subClassOf es:Settlement ;
+	rdfs:comment "All settlements with a population at or above 20 and below 40 individuals"@en .
+
+es:LargeSettlement 
+	a rdfs:Class ; 
+	rdfs:subClassOf es:Settlement ;
+	rdfs:comment "All settlements with a population at or above 40 and below 70 individuals"@en .
+
+es:VeryLargeSettlement 
+	a rdfs:Class ;
+	rdfs:subClassOf es:Settlement ;
+	rdfs:comment "All settlements with a population at or above 70 individuals"@en .
+
+# ---- Geography Related Properties
+
+es:hasHold 
+	a rdf:Property ;		  
+	rdfs:range es:Hold .
+			 
+es:inHold 
+	a rdf:Property ;
+	rdfs:domain es:Place ;
+	rdfs:range es:Hold .
+			 
+es:within 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:inHold ;
+	rdfs:domain es:Place ;
+	rdfs:range es:Place ;
+	rdfs:comment "A place that is located within another place"@en .
+ 
+es:partOf 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:inHold ;
+	rdfs:domain es:Place ;
+	rdfs:range es:Place ;
+	rdfs:comment "A place that is considered a part of another place / adjacent to it, but not located within it"@en .
+			
+es:placeName 
+	a rdf:Property ;
+	rdfs:domain es:Place ;
+	rdfs:range xsd:string .
+
+es:holdName 
+	a rdf:Property ;
+	rdfs:domain es:Hold ;
+	rdfs:range xsd:string .
+
+es:hasPopulation 
+	a rdf:Property;
+	rdfs:domain es:Settlement ;
+	rdfs:range xsd:int .
+
+es:hasCapital 
+	a rdf:Property ;
+	rdfs:domain es:Hold ;
+	rdfs:range es:Settlement .
+			  
+es:hasRuler 
+	a rdf:Property ;
+	rdfs:domain es:Hold ;
+	rdfs:range es:KeyFigure .
+
+# ---- People Related Classes
+
+es:Person a rdfs:Class .
+es:Gender a rdfs:Class .
+es:Race a rdfs:Class .
+
+es:KeyFigure 
+	a rdfs:Class ;
+	rdfs:subClassOf es:Person ;
+	rdfs:comment "Any person significant enough in importance to those around them or the geographical place they reside in"@en .
+
+# ---- People Related Properties
+
+es:hasRole 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range xsd:string .
+ 
+es:hasName 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range xsd:string .
+ 
+es:livesIn 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Place .
+ 
+es:hasGender
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Gender .
+ 
+es:isRace 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Race .
+
+es:knows 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person ;
+	rdfs:comment "One person is at least aware of the existence of the other person"@en .
+
+es:friendsWith 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:likes ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person ;
+	rdfs:comment "One person is friends with another and thus likes them"@en .
+
+es:worksWith 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:knows ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person ;
+	rdfs:comment "One person works with another and thus also knows them"@en .
+
+es:worksFor 
+	a rdf:Property ;
+	rdfs:domain es:Person ;
+	rdfs:comment "A person works for another person, organisation or entity"@en .
+
+es:likes 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:knows ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person .
+
+es:loves 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:knows ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person .
+
+es:dislikes 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:knows ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person .
+
+es:hates 
+	a rdf:Property ;
+	rdfs:subPropertyOf es:knows ;
+	rdfs:domain es:Person ;
+	rdfs:range es:Person .
+
+# ---- Geography (Hold) Triples
+
+_:Skyrim 
+	rdfs:label "Skyrim"@en ;
+	rdfs:comment "One of the 9 provinces within the continent of Tamriel"@en ;
+	es:hasHold 
+		es:Eastmarch, 
+		es:Falkreath, 
+		es:Haafinger,
+		es:Hjaalmarch,
+		es:ThePale,
+		es:TheReach,
+		es:TheRift,
+		es:Whiterun,
+		es:Winterhold .
+
+es:Eastmarch 
+	a es:Hold ;
+	es:holdName "Eastmarch"@en ;
+	es:hasCapital es:Windhelm ;
+	es:hasRuler es:UlfricStormcloak .
+
+es:Falkreath 
+	a es:Hold ; 
+	es:holdName "Falkreath"@en ;
+	es:hasCapital es:FalkreathVillage ;
+	es:hasRuler es:Siddgeir .
+
+es:Haafinger 
+	a es:Hold ; 
+	es:holdName "Haafinger"@en ;
+	es:hasCapital es:Solitude ;
+	es:hasRuler es:Elisif .
+
+es:Hjaalmarch 
+	a es:Hold ;
+	es:holdName "Hjaalmarch"@en ;
+	es:hasCapital es:Morthal ;
+	es:hasRuler es:IdgrodRavencrone .
+
+es:ThePale 
+	a es:Hold ; 
+	es:holdName "The Pale"@en ;
+	es:hasCapital es:Dawnstar ;
+	es:hasRuler es:Skald .
+
+es:TheReach 
+	a es:Hold ; 
+	es:holdName "The Reach"@en ;
+	es:hasCapital es:Markarth ;
+	es:hasRuler es:Igmund .
+
+es:TheRift 
+	a es:Hold ; 
+	es:holdName "The Rift"@en ;
+	es:hasCapital es:Riften ;
+	es:hasRuler es:Laila .
+
+es:Whiterun 
+	a es:Hold ; 
+	es:holdName "Whiterun"@en ;
+	es:hasCapital es:WhiterunCity ;
+	es:hasRuler es:Balgruuf .
+
+es:Winterhold 
+	a es:Hold ; 
+	es:holdName "Winterhold"@en ;
+	es:hasCapital es:WinterholdVillage ;
+	es:hasRuler es:Korir .
+
+# ---- Major Settlement Triples
+
+es:Dawnstar 
+	a es:MediumSettlement ;
+	es:placeName "Dawnstar"@en ;
+	es:hasPopulation 33 ;
+	es:inHold es:ThePale .
+ 
+es:WinterholdVillage 
+	a es:MediumSettlement ;
+	es:placeName "Winterhold Village"@en ;
+	es:hasPopulation 29 ;
+	es:inHold es:Winterhold .
+ 
+es:FalkreathVillage 
+	a es:MediumSettlement ;
+	es:placeName "Falkreath Village"@en ;
+	es:hasPopulation 20 ;
+	es:inHold es:Falkreath .
+ 
+es:Markarth 
+	a es:LargeSettlement ;
+	es:placeName "Markarth"@en ;
+	es:hasPopulation 65 ;
+	es:inHold es:TheReach .
+ 
+es:Morthal 
+	a es:MediumSettlement ;
+	es:placeName "Morthal"@en ;
+	es:hasPopulation 23 ;
+	es:inHold es:Hjaalmarch .
+				
+es:Riften 
+	a es:LargeSettlement ;
+	es:placeName "Riften"@en ;
+	es:hasPopulation 58 ;
+	es:inHold es:TheRift .
+ 
+es:Solitude 
+	a es:LargeSettlement ;
+	es:placeName "Solitude"@en ;
+	es:hasPopulation 62 ;
+	es:inHold es:Haafinger .
+ 
+es:WhiterunCity 
+	a es:VeryLargeSettlement ;
+	es:placeName "Whiterun City"@en ;
+	es:hasPopulation 74 ;
+	es:inHold es:Whiterun .
+				
+es:Windhelm 
+	a es:LargeSettlement ;
+	es:placeName "Windhelm"@en ;
+	es:hasPopulation 56 ;
+	es:inHold es:Eastmarch .
+
+# ---- Notable Landmarks & Settlements Triples
+
+es:FalkreathWatchtower 
+	a es:Building ;
+	es:placeName "Falkreath Watchtower"@en ;
+	es:partOf es:FalkreathVillage .
+
+es:DeadMansDrinkInn 
+	a es:Building ;
+	es:placeName "Dead Man's Drink Inn"@en ;
+	es:within es:FalkreathVillage .
+
+es:WinterholdCollege 
+	a es:Building ;
+	es:placeName "The College Of Winterhold"@en ;
+	es:within es:WinterholdVillage .
+
+es:DawnstarSanctuary 
+	a es:Building ;
+	es:placeName "Dawnstar Sanctuary"@en ;
+	es:within es:Dawnstar .
+
+es:WhiteHall 
+	a es:Building ;
+	es:placeName "The White Hall Longhouse"@en ;
+	es:within es:Dawnstar .
+
+es:PalaceOfKings 
+	a es:Building ;
+	es:placeName "Palace Of The Kings"@en ;
+	es:within es:Windhelm .
+
+es:WindhelmStables 
+	a es:Building ;
+	es:placeName "Windhelm Stables"@en ;
+	es:partOf es:Windhelm .
+
+es:BrandyMugFarm 
+	a es:Building ;
+	es:placeName "Brandy-Mug Farm"@en ;
+	es:partOf es:Windhelm .
+
+es:BluePalace 
+	a es:Building ;
+	es:placeName "The Blue Palace"@en ;
+	es:within es:Solitude .
+
+es:CastleDour 
+	a es:Building ;
+	es:placeName "Castle Dour"@en ;
+	es:within es:Solitude .
+
+es:EECWarehouse 
+	a es:Building ;
+	es:placeName "East Empire Company Warehouse"@en ;
+	es:partOf es:Solitude .
+
+es:KatlasFarm 
+	a es:Building ;
+	es:placeName "Katla's Farm"@en ;
+	es:partOf es:Solitude .
+
+es:SolitudeSawmill 
+	a es:Building ;
+	es:placeName "Solitude Sawmill"@en ;
+	es:partOf es:Solitude .
+
+es:SolitudeLighthouse 
+	a es:Building ;
+	es:placeName "Solitude Lighthouse"@en ;
+	es:partOf es:Solitude .
+
+es:ThalmorEmbassy 
+	a es:Building ;
+	es:placeName "Thalmor Embassy"@en ;
+	es:partOf es:Solitude .
+ 
+es:UnderstoneKeep 
+	a es:Building ;
+	es:placeName "Understone Keep"@en ;
+	es:within es:Markarth .
+
+es:MarkarthStables 
+	a es:Building ;
+	es:placeName "Markarth Stables"@en ;
+	es:partOf es:Markarth .
+
+es:SalviusFarm 
+	a es:Building ;
+	es:placeName "Salvius Farm"@en ;
+	es:partOf es:Markarth .
+
+es:LeftHandMine 
+	a es:Landmark ;
+	es:placeName "Left Hand Mine"@en ;
+	es:partOf es:SalviusFarm .
+
+es:MistveilKeep 
+	a es:Building ;
+	es:placeName "Mistveil Keep"@en ;
+	es:within es:Riften .
+
+es:NightingaleHall 
+	a es:Landmark ;
+	es:placeName "Nightingale Hall"@en ;
+	es:within es:Riften .
+
+es:RiftenStables
+	a es:Building ;
+	es:placeName "Riften Stables"@en ;
+	es:partOf es:Riften .
+
+es:MerryfairFarm 
+	a es:Building ;
+	es:placeName "Merryfair Farm"@en ;
+	es:partOf es:Riften .
+
+es:SnowShodFarm 
+	a es:Building ;
+	es:placeName "Snow-Shod Farm"@en ;
+	es:partOf es:Riften .
+
+es:BlackBriarLodge 
+	a es:Building ;
+	es:placeName "Black-Briar Lodge"@en ;
+	es:partOf es:Riften .
+
+es:Dragonsreach 
+	a es:Building ;
+	es:placeName "Dragonsreach"@en ;
+	es:within es:WhiterunCity .
+
+es:WhiterunStables 
+	a es:Building ;
+	es:placeName "Whiterun Stables"@en ;
+	es:partOf es:WhiterunCity .
+
+es:PelagiaFarm 
+	a es:Building ;
+	es:placeName "Pelagia Farm"@en ;
+	es:partOf es:WhiterunCity .
+
+es:HonningbewMeadery 
+	a es:Building ;
+	es:placeName "Honningbrew Meadery"@en ;
+	es:partOf es:WhiterunCity .
+
+es:ChillfurrowFarm 
+	a es:Building ;
+	es:placeName "Chillfurrow Farm"@en ;
+	es:partOf es:WhiterunCity .
+
+es:BattleBornFarm 
+	a es:Building ;
+	es:placeName "Battle-Born Farm"@en ;
+	es:partOf es:WhiterunCity .
+
+es:WesternWatchtower 
+	a es:Building ;
+	es:placeName "Western Watchtower"@en ;
+	es:partOf es:WhiterunCity .
+
+es:WhiteWatchTower 
+	a es:Building ;
+	es:placeName "Whitewatch Tower"@en ;
+	es:partOf es:WhiterunCity .
+
+es:Riverwood 
+	a es:SmallSettlement ;
+	es:placeName "Riverwood"@en ;
+	es:hasPopulation 16 ;
+	es:inHold es:Whiterun .
+
+es:Ivarstead 
+	a es:SmallSettlement ;
+	es:placeName "Ivarstead"@en ;
+	es:hasPopulation 12 ;
+	es:inHold es:TheRift .
+
+es:DragonBridge 
+	a es:SmallSettlement ;
+	es:placeName "Dragon Bridge"@en ;
+	es:hasPopulation 13 ;
+	es:inHold es:Haafinger .
+
+es:DragonBridgeOverlook 
+	a es:Landmark ;
+	es:placeName "Dragon Bridge Overlook"@en ;
+	es:partOf es:DragonBridge .
+
+es:Karthwasten 
+	a es:Settlement ;
+	es:placeName "Karthwasten"@en ;
+	es:hasPopulation 8 ;
+	es:inHold es:TheReach .
+
+es:Rorikstead 
+	a es:SmallSettlement ;
+	es:placeName "Rorikstead"@en ;
+	es:hasPopulation 11 ;
+	es:inHold es:Whiterun .
+
+es:ShorsStone 
+	a es:Settlement ;
+	es:placeName "Shor's Stone"@en ;
+	es:hasPopulation 4 ;
+	es:inHold es:TheRift .
+
+es:ShorsWatchTower 
+	a es:Building ;
+	es:placeName "Shor's Watchtower"@en ;
+	es:partOf es:ShorsStone .
+
+es:Helgen 
+	a es:Landmark ;
+	es:placeName "Helgen"@en ;
+	es:inHold es:Falkreath .
+			
+es:WorldThroat 
+	a es:Landmark ;
+	es:placeName "Throat Of The World"@en ;
+	es:inHold es:Whiterun .
+
+es:HighHrothgar 
+	a es:Building ;
+	es:placeName "High Hrothgar"@en ;
+	es:partOf es:WorldThroat .
+
+# ---- Gender and Race Triples
+
+es:Male a es:Gender .
+es:Female a es:Gender .
+
+es:Altmer a es:Race .
+es:Argonian a es:Race .
+es:Bosmer a es:Race .
+es:Breton a es:Race .
+es:Dunmer a es:Race .
+es:Imperial a es:Race .
+es:Khajit a es:Race .
+es:Nord a es:Race .
+es:Orc a es:Race .
+es:Redguard a es:Race .
+
+# ---- People and their Relations Triples
+
+_:ImperialLegion 
+	rdfs:label "The Imperial Legion"@en ;
+	rdfs:comment "Is one of the main factions vying for political control of Skyrim"@en .
+
+_:Stormcloaks
+	rdfs:label "The Stormcloaks"@en ;
+	rdfs:comment "Is one of the main factions vying or political control of Skyrim"@en .
+
+_:Thalmor
+	rdfs:label "The Thalmor"@en ;
+	rdfs:comment "Is undercover faction secretly vying for political control of Skyrim"@en .
+
+es:Arngeir 
+	a es:KeyFigure ;
+	es:hasName "Arngeir"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Greybeard"@en ;
+	es:livesIn es:HighHrothgar ;
+	es:worksWith 
+		es:Borri, 
+		es:Einarth, 
+		es:Wulfgar ;
+	es:friendsWith 
+		es:Borri, 
+		es:Einarth, 
+		es:Wulfgar ;
+	es:knows es:Tullius ;
+	es:dislikes es:UlfricStormcloak .
+
+es:Borri 
+	a es:Person ;
+	es:hasName "Borri"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Greybeard"@en ;
+	es:livesIn es:HighHrothgar ;
+	es:friendsWith 
+		es:Arngeir, 
+		es:Einarth, 
+		es:Wulfgar ;
+	es:worksWith 
+		es:Arngeir, 
+		es:Einarth, 
+		es:Wulfgar .
+
+es:Einarth 
+	a es:Person ;
+	es:hasName "Einarth"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Greybeard"@en ;
+	es:livesIn es:HighHrothgar ;
+	es:friendsWith 
+		es:Arngeir, 
+		es:Borri, 
+		es:Wulfgar ;
+	es:worksWith 
+		es:Arngeir, 
+		es:Borri, 
+		es:Wulfgar .
+
+es:Wulfgar 
+	a es:Person ;
+	es:hasName "Wulfgar"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Greybeard"@en ;
+	es:livesIn es:HighHrothgar ;
+	es:friendsWith 
+		es:Arngeir, 
+		es:Einarth, 
+		es:Borri ;
+	es:worksWith 
+		es:Arngeir, 
+		es:Einarth, 
+		es:Borri .
+
+es:UlfricStormcloak 
+	a es:KeyFigure ;
+	es:hasName "Ulfric Stormcloak"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:leads _:Stormcloaks ;
+	es:livesIn es:PalaceOfKings ;
+	es:likes 
+		es:Arngeir, 
+		es:Galmar,
+		es:Skald, 
+		es:Laila, 
+		es:Korir ;
+	es:dislikes 
+		es:Brunwulf,
+		es:Balgruuf, 
+		es:Siddgeir, 
+		es:Elisif,
+		es:IdgrodRavencrone,
+		es:Igmund ;
+	es:hates es:Tullius .
+
+es:Galmar 
+	a es:Person ;
+	es:hasName "Galmar Stone-Fist"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Housecarl"@en ;
+	es:livesIn es:PalaceOfKings ;
+	es:worksFor 
+		es:UlfricStormcloak,
+		_:Stormcloaks ;
+	es:likes es:UlfricStormcloak ;
+	es:dislikes es:Brunwulf ;
+	es:hates es:Tullius .
+
+es:Brunwulf 
+	a es:Person ;
+	es:hasName "Brunwulf Free-Winter"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Brunwulf Free-Winter's House"@en ;
+		es:within es:Windhelm
+	] ;
+	es:dislikes es:Tullius ;
+	es:hates 
+		es:UlfricStormcloak, 
+		es:Galmar .
+	
+
+es:Tullius 
+	a es:KeyFigure ;
+	es:hasName "Tullius"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Imperial ;
+	es:hasRole "General"@en ;
+	es:livesIn es:CastleDour ;
+	es:worksWith es:Rikke ;
+	es:worksFor _:ImperialLegion ;
+	es:loves es:Rikke ;
+	es:likes 
+		es:Brunwulf, 
+		es:Balgruuf,
+		es:Siddgeir, 
+		es:Igmund,
+		es:Elisif, 
+		es:IdgrodRavencrone ;
+	es:knows es:Arngeir ;
+	es:dislikes 
+		es:Skald, 
+		es:Laila, 
+		es:Korir ;
+	es:hates 
+		es:UlfricStormcloak, 
+		es:Galmar .
+
+es:Rikke 
+	a es:Person ;
+	es:hasName "Rikke"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Nord ;
+	es:hasRole "Legate"@en ;
+	es:livesIn es:CastleDour ;
+	es:worksWith es:Tullius ;
+	es:worksFor _:ImperialLegion ;	
+	es:loves es:Tullius ;
+	es:likes 
+		es:Brunwulf, 
+		es:Balgruuf ;
+	es:knows es:Elisif ;
+	es:dislikes es:UlfricStormcloak .
+
+es:Siddgeir 
+	a es:KeyFigure ;
+	es:hasName "Siddgeir"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Jarl's Longhouse"@en ;
+		es:within es:FalkreathVillage
+	] ;
+	es:worksFor _:ImperialLegion ;
+	es:likes 
+		es:Tullius, 
+		es:Helvard ;
+	es:dislikes 
+		es:Korir, 
+		es:Nenya ;
+	es:hates es:UlfricStormcloak .
+
+es:Helvard 
+	a es:Person ;
+	es:hasName "Helvard"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Housecarl"@en ;
+	es:livesIn es:DeadMansDrinkInn ;
+	es:worksFor es:Siddgeir ;
+	es:friendsWith es:Nenya ;
+	es:likes es:UlfricStormcloak ;
+	es:dislikes 
+		es:Siddgeir, 
+		es:Tullius .
+
+es:Nenya 
+	a es:Person ;
+	es:hasName "Nenya"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Altmer ;
+	es:hasRole 
+		"Elemental Mage"@en, 
+		"Jarl's Wizard"@en ;
+	es:livesIn es:DeadMansDrinkInn ;
+	es:worksFor 
+		es:Siddgeir,
+		_:Thalmor ;
+	es:friendsWith es:Helvard ;
+	es:knows es:Siddgeir ;	
+	es:hates 
+		es:Tullius, 
+		es:UlfricStormcloak .
+ 
+es:Elisif 
+	a es:KeyFigure ;
+	es:hasName "Elisif The Fair"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn es:BluePalace ;
+	es:worksFor _:ImperialLegion ;
+	es:loves es:Tullius ;
+	es:likes 
+		es:BolgeirBearclaw, 
+		es:SybilleStentor ;
+	es:dislikes 
+		es:Rikke, 
+		es:Laila, 
+		es:FalkFirebeard ;
+	es:hates es:UlfricStormcloak .
+
+es:FalkFirebeard 
+	a es:Person ;
+	es:hasName "Falk Firebeard"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole 
+		"Steward"@en, 
+		"Jarl's Advisor"@en ;
+	es:livesIn es:BluePalace ;
+	es:worksFor es:Elisif ;
+	es:loves es:Elisif ;
+	es:likes es:Rikke ;
+	es:dislikes es:UlfricStormcloak ;
+	es:hates 
+		es:Tullius, 
+		es:SybilleStentor .
+ 
+es:BolgeirBearclaw 
+	a es:Person ;
+	es:hasName "Bolgeir Bearclaw"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Housecarl"@en ;
+	es:livesIn es:BluePalace ;
+	es:worksFor es:Elisif ;
+	es:likes 
+		es:Elisif, 
+		es:Galmar ;	
+	es:knows 
+		es:Tullius, 
+		es:UlfricStormcloak, 
+		es:FalkFirebeard, 
+		es:SybilleStentor .
+ 
+es:SybilleStentor 
+	a es:Person ;
+	es:hasName "Sybille Stentor"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Breton ;
+	es:hasRole "Court Wizard"@en ;
+	es:livesIn es:BluePalace ;
+	es:worksFor es:Elisif ;
+	es:loves es:Elisif ;
+	es:hates 
+		es:FalkFirebeard, 
+		es:BolgeirBearclaw .
+
+es:IdgrodRavencrone 
+	a es:KeyFigure ;
+	es:hasName "Idgrod Ravencrone"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Jarl's Longhouse"@en ;
+		es:within es:Morthal
+	] ;
+	es:friendsWith es:Falion ;
+	es:likes es:Tullius ;
+	es:hates es:UlfricStormcloak .
+
+es:Falion 
+	a es:Person ;
+	es:hasName "Falion"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Redguard ;
+	es:hasRole "Conjurer"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Falion's House"@en ;
+		es:within es:Morthal
+	] ;
+	es:friendsWith es:IdgrodRavencrone .
+
+es:Skald 
+	a es:KeyFigure ;
+	es:hasName "Skald The Elder"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn es:WhiteHall ;
+	es:worksWith es:Frorkmar ;
+	es:worksFor _:Stormcloaks ;
+	es:friendsWith es:Frorkmar ;
+	es:likes 
+		es:UlfricStormcloak, 
+		es:Korir, 
+		es:Laila, 
+		es:Bulfrek ;
+	es:dislikes es:Madena ;
+	es:hates 
+		es:Tullius, 
+		es:Rikke, 
+		es:IdgrodRavencrone .
+
+es:Madena 
+	a es:Person ;
+	es:hasName "Madena"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Breton ;
+	es:hasRole "Court Wizard"@en ;
+	es:livesIn es:WhiteHall ;
+	es:worksFor es:Skald ;
+	es:likes 
+		es:Skald, 
+		es:Bulfrek ;
+	es:knows 
+		es:UlfricStormcloak, 
+		es:Tullius ;
+	es:dislikes es:Frorkmar .
+
+es:Bulfrek 
+	a es:Person ;
+	es:hasName "Bulfrek"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl's Servant"@en ;
+	es:livesIn es:WhiteHall ;
+	es:worksFor es:Skald ;
+	es:knows 
+		es:Skald, 
+		es:Madena, 
+		es:Frorkmar .
+
+es:Frorkmar 
+	a es:Person ;
+	es:hasName "Frorkmar Banner-Torn"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Stormcloak General"@en ;
+	es:livesIn es:WhiteHall ;
+	es:worksWith 
+		es:Skald, 
+		es:Korir ;
+	es:worksFor 
+		es:UlfricStormcloak, 
+		_:Stormcloaks ;
+	es:friendsWith es:Skald ;
+	es:likes es:UlfricStormcloak ;
+	es:knows es:Bulfrek ;
+	es:dislikes es:Madena ;
+	es:hates
+		es:Tullius, 
+		es:Rikke .
+
+es:Igmund
+	a es:KeyFigure ;
+	es:hasName "Igmund"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole 
+		"Jarl"@en, 
+		"Thalmor Sympathiser"@en ;
+	es:livesIn es:UnderstoneKeep ;
+	es:worksFor 
+		_:ImperialLegion, 
+		_:Thalmor ;
+	es:loves 
+		es:Tullius, 
+		es:Ancano, 
+		es:Calcelmo, 
+		es:Aicantar ;
+	es:knows es:Ghorza ;
+	es:hates 
+		es:UlfricStormcloak, 
+		es:Galmar .
+
+es:Aicantar 
+	a es:Person ;
+	es:hasName "Aicantar"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Altmer ;
+	es:hasRole 
+		"Calcelmo's Apprentice"@en,
+		"Thalmor Spy"@en,
+		"Conjurer"@en ;
+	es:livesIn es:UnderstoneKeep ;
+	es:worksFor 
+		es:Calcelmo, 
+		_:Thalmor ;
+	es:likes 
+		es:Tullius, 
+		es:Igmund, 
+		es:Calcelmo ;
+	es:dislikes 
+		es:Ghorza, 
+		es:Tacitus ;
+	es:hates es:UlfricStormcloak .
+
+es:Calcelmo 
+	a es:Person ;
+	es:hasName "Calcelmo"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Altmer ;
+	es:hasRole 
+		"Court Wizard"@en,
+		"Thalmor Spy"@en,
+		"Conjurer"@en ;
+	es:livesIn es:UnderstoneKeep ;
+	es:worksFor 
+		es:Igmund, 
+		_:Thalmor ;
+	es:likes 
+		es:Tullius, 
+		es:Igmund, 
+		es:Aicantar ;
+	es:hates es:UlfricStormcloak .
+
+es:Ghorza 
+	a es:Person ;
+	es:hasName "Ghorza gra-Bagol"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Orc ;
+	es:hasRole "Blacksmith"@en ;
+	es:livesIn es:UnderstoneKeep ;
+	es:worksFor es:Igmund ;
+	es:likes 
+		es:Igmund, 
+		es:Tullius ;
+	es:knows es:Tacitus ;
+	es:dislikes 
+		es:Aicantar, 
+		es:Calcelmo ;
+	es:hates es:UlfricStormcloak .
+
+es:Tacitus 
+	a es:Person ;
+	es:hasName "Tacitus Sallustius"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Imperial ;
+	es:hasRole 
+		"Ghorza's Apprentice Blacksmith"@en,
+		"Merchant"@en ;
+	es:livesIn es:UnderstoneKeep ;
+	es:worksFor es:Ghorza ;
+	es:likes es:Calcelmo ;
+	es:knows 
+		es:Ghorza, 
+		es:Igmund, 
+		es:Tullius, 
+		es:UlfricStormcloak .
+
+es:Laila 
+	a es:KeyFigure ;
+	es:hasName "Laila Law-Giver"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn es:MistveilKeep ;
+	es:worksWith es:Maven ;
+	es:worksFor _:Stormcloaks ;
+	es:friendsWith es:Maven ;
+	es:likes es:UlfricStormcloak;
+	es:knows es:Anuriel .
+
+es:MavenBlackBriar 
+	a es:Person ;
+	es:hasName "Maven Black-Briar"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Nord ;
+	es:hasRole "Matriarch Of The Black-Briar Family"@en ;
+	es:livesIn es:BlackBriarLodge ;
+	es:worksWith es:Laila ;
+	es:worksFor _:ImperialLegion ;
+	es:friendsWith es:Laila ;
+	es:likes es:Tullius ;
+	es:hates 
+		es:UlfricStormcloak, 
+		es:Anuriel,
+		es:MallusMaccius, 
+		es:Sabjorn .
+
+es:Addvild 
+	a es:Person ;
+	es:hasName "Addvild"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Farmer"@en ;
+	es:livesIn es:SnowShodFarm ;
+	es:knows 
+		es:Laila, 
+		es:Maven .
+
+es:Anuriel 
+	a es:Person ;
+	es:hasName "Anuriel"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Bosmer ;
+	es:hasRole 
+		"Steward"@en, 
+		"Archer"@en ;
+	es:livesIn es:MistveilKeep ;
+	es:worksFor es:Laila ;
+	es:friendsWith es:Valindor ;
+	es:likes es:Laila ;
+	es:knows es:Tullius ;
+	es:hates 
+		es:Maven, 
+		es:UlfricStormcloak .
+
+es:Valindor 
+	a es:Person ;
+	es:hasName "Valindor"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Bosmer ;
+	es:hasRole 
+		"Blacksmith"@en, 
+		"Archer"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Valindor's House"@en ;
+		es:within es:Riften
+	] ;
+	es:friendsWith es:Anuriel ;
+	es:knows 
+		es:Tullius, 
+		es:Ghorza,
+		es:Tacitus ;
+	es:dislikes 
+		es:Laila, 
+		es:Maven, 
+		es:UlfricStormcloak .
+
+es:Balgruuf 
+	a es:KeyFigure ;
+	es:hasName "Balgruuf The Greater"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn es:Dragonsreach ;
+	es:worksFor _:ImperialLegion ;
+	es:friendsWith es:Hrongar ;
+	es:likes es:Tullius ;
+	es:knows 
+		es:Elisif, 
+		es:Siddgeir, 
+		es:Igmund ;
+	es:dislikes 
+		es:UlfricStormcloak, 
+		es:Belethor .
+
+es:Hrongar 
+	a es:Person ;
+	es:hasName "Hrongar"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole 
+		"Housecarl"@en, 
+		"Jarl's Advisor"@en ;
+	es:livesIn es:Dragonsreach ;
+	es:worksFor es:Balgruuf ;
+	es:friendsWith es:Balgruuf ;
+	es:likes 
+		es:UlfricStormcloak,
+		es:Sabjorn, 
+		es:MallusMaccius ;
+	es:dislikes 
+		es:Tullius, 
+		es:Belethor .
+
+es:Sabjorn 
+	a es:Person ;
+	es:hasName "Sabjorn"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole 
+		"Brewer"@en, 
+		"Shop Owner"@en ;
+	es:livesIn es:HonningbewMeadery ;
+	es:likes 
+		es:Balgruuf, 
+		es:UlfricStormcloak,
+		es:Tullius, 
+		es:MallusMaccius ;
+	es:knows 
+		es:SeverioPelagia, 
+		es:Belethor ;
+	es:hates 
+		es:Maven, 
+		es:Laila .
+
+es:MallusMaccius 
+	a es:Person ;
+	es:hasName "Mallus Maccius"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Imperial ;
+	es:hasRole "Brewer"@en ;
+	es:livesIn es:HonningbewMeadery ;
+	es:worksFor es:Sabjorn ;
+	es:likes 
+		es:Sabjorn, 
+		es:Balgruuf ;
+	es:knows 
+		es:SeverioPelagia, 
+		es:Nimriel .
+
+es:Belethor 
+	a es:Person ;
+	es:hasName "Belethor"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Breton ;
+	es:hasRole 
+		"Merchant"@en, 
+		"Shop Owner"@en,
+		"Investor"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Belethor's General Goods Shop"@en ;
+		es:within es:WhiterunCity
+	] ;
+	es:likes 
+		es:Sabjorn, 
+		es:SeverioPelagia ;
+	es:knows 
+		es:UlfricStormcloak, 
+		es:Tullius ;
+	es:dislikes 
+		es:Balgruuf, 
+		es:Hrongar .
+
+es:SeverioPelagia 
+	a es:Person ;
+	es:hasName "Severio Pelagia"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Imperial ;
+	es:hasRole "Farmer"@en ;
+	es:livesIn 
+		es:PelagiaFarm, 
+		[
+			a es:Building ;
+			es:placeName "Severio Pelagia's House"@en ;
+			es:within es:WhiterunCity
+		] ;
+	es:likes 
+		es:Sabjorn, 
+		es:Balgruuf, 
+		es:MallusMaccius ;
+	es:knows 
+		es:Nimriel, 
+		es:Belethor ;
+	es:dislikes 
+		es:Maven, 
+		es:Laila .
+ 
+es:Nimriel 
+	a es:Person ;
+	es:hasName "Nimriel"@en ;
+	es:hasGender es:Female ;
+	es:isRace es:Bosmer ;
+	es:hasRole "Farmer"@en ;
+	es:livesIn es:PelagiaFarm ;
+	es:worksFor es:SeverioPelagia ;
+	es:knows 
+		es:SeverioPelagia, 
+		es:Sabjorn, 
+		es:Anuriel ;
+	es:dislikes 
+		es:Balgruuf, 
+		es:Belethor,
+		es:Laila .
+
+es:Korir 
+	a es:KeyFigure ;
+	es:hasName "Korir"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Nord ;
+	es:hasRole "Jarl"@en ;
+	es:livesIn [
+		a es:Building ;
+		es:placeName "Jarl's Longhouse"@en ;
+		es:within es:WinterholdVillage
+	] ;
+	es:worksWith 
+		es:Frorkmar, 
+		es:SavosAren ;
+	es:likes 
+		es:Brunwulf, 
+		es:UlfricStormcloak, 
+		es:Frorkmar ;
+	es:dislikes 
+		es:SavosAren, 
+		es:Ancano ;
+	es:hates es:Tullius .
+
+es:SavosAren 
+	a es:KeyFigure ;
+	es:hasName "Savos Aren"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Dunmer ;
+	es:hasRole 
+		"Arch Mage Of The College Of Winterhold"@en,
+		"Conjurer"@en ;
+	es:livesIn es:WinterholdCollege ;
+	es:worksWith es:Korir ;
+	es:likes es:Tullius ;
+	es:knows es:Ancano ;
+	es:dislikes 
+		es:UlfricStormcloak, 
+		es:Korir .
+
+es:Ancano 
+	a es:Person ;
+	es:hasName "Ancano"@en ;
+	es:hasGender es:Male ;
+	es:isRace es:Altmer ;
+	es:hasRole 
+		"Arch Mage's Advisor"@en,
+		"Thalmor Spy"@en ;
+	es:livesIn es:WinterholdCollege ;
+	es:worksFor 
+		es:SavosAren, 
+		_:Thalmor ;
+	es:knows es:Nenya ;
+	es:dislikes 
+		es:SavosAren, 
+		es:Korir ;
+	es:hates 
+		es:Skald, 
+		es:UlfricStormcloak .

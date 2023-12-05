@@ -1,0 +1,90 @@
+# a.
+  # "Spider-Man ": - my domain 
+# # description:  my domain is one of the most classic and most exciting marvel movies with a huge following I will be representing its facts in my rdf graph. I will be representing the characters and their relations using the turtle syntax including some actors.
+# Spider-Man:
+# 1. Spider-Man is a famous superhero from comic books and movies.
+# 2. His real name is Peter Parker.
+# 3. He gained his powers from a radioactive spider bite.
+# 4. Spider-Man was created by Stan Lee.
+# 5. He first appeared in "Amazing Fantasy" #15 in 1962.
+# 6. Peter Parker is a high school student when he becomes Spider-Man.
+# 7. Spider-Man is known for his red and blue costume and web-shooters.
+# 8. He fights crime in New York City and has many iconic villains like the Green Goblin.
+# 9. Spider-Man is famous for his agility, wall-crawling, and web-swinging abilities.
+# 10. His catchphrase is "Withgreatpowercomesgreatresponsibility."fantasy genre.
+# 11. His Girlfriend is MJ 
+#12 . His Bestfriend  is HarryOsborn 
+# 13. His aunty is May
+# b. Choose an appropriate prefix/namespace for your RDF graph. Write down its declaration, as well as the declarations of the prefixes you may need later on ? :
+# namespace: <http://www.example.com/Spider-Man/>,  <http://www.example.com/Spider-Man-relations/>,
+# @prefix spm, spmr
+@prefix spm: <http://www.example.com/Spider-Man/> .
+@prefix spmr:  <http://www.example.com/Spider-Man-relations/> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# c. Create a vocabulary (classes and properties) that you will use for modelling. Write down their definitions (stating e.g., that Student is a class, while isTaughtBy is a property) as Turtle triples.
+# 1 .
+# properties: 
+# itsGirlfriend   
+# isRealName       
+# hasWorkFor       
+# hasFirstAppeared 
+# hasFriend       
+# knownFor        
+# hasCreator       
+# hasVillain       
+# isPowerComesFrom 
+# hassCatchphrase   
+# isFamousFor      
+# isMember       
+# hasSuperPower     
+# hasAbility      
+# hasSuperpower    
+# hasCostume       
+# hasActor         
+# hasappearedIn   
+# hasVehicule      
+# hasFeature
+# Classes: superHero, Spider-Man,characters
+# d. ) Describe some domain knowledge in 3 RDFS axioms of different types (out of subClassOf ,subPropertyOf, domain and range).
+# 1. subClassOf
+# spm:spiderMan rdf:subClassOf spm:superHero.
+# # 2. domain
+# spmr:knowFor rdf:domain spm:superHero.
+# # 3. range
+# spmr:isEnemyOf rdf:range xsd:string.
+
+# e. ) Write at least 20 triples stating facts about your chosen domain using the vocabulary you have defined. Include at least one blank node that appears in more than 1 triple (for instance, you could use it to represent complex attributes). Make sure in your RDF graph you have links between individual resources (e.g., triples like sw is taught by eb) and between resources and literal values (e.g., triples like sw’s name is "Semantic Technologies...").
+  
+spm:spiderMan spmr:itsGirlfriend    'Mary Jane';
+              spmr:isRealName       'PeterParker';
+              spmr:hasWorkFor       'DailyBugle';
+              spmr:hasFirstAppeared '1962';
+              spmr:hasFriend        'HarryOsborn';
+              spmr:knownFor         'web-shooters';
+              spmr:hasCreator       'Stan Lee';
+              spmr:hasVillain       'Venom';
+              spmr:isPowerComesFrom 'spider bite';
+              spmr:hassCatchphrase   'With great power comes great responsibility';
+              spmr:isFamousFor      'comic books and movies';
+              spmr:isMember         'The avengers';
+              spmr:hasSuperPower     'WallCrawling';
+              spmr:hasAbility       'Spider-sense' ;
+              spmr:hasSuperpower    'SuperhumanStrength';
+              spmr:hasCostume       'blackSuit';
+              spmr:hasActor         'Tobey Maguire';
+              spmr:hasappearedIn    'SpiderManAnimatedSeries';
+              spmr:hasVehicule      'Spider Mobile';
+              spmr:hasFeature       'WebWings'.
+spmr:MJ rdf:type   spmr:Character;
+                   spmr:isRealName  'Mary Jane Watson';
+                   spmr:appearedIn  'The Amazing Spider-Man'.
+spmr:Venom spmr:hasPower 'Symbiote Enhancements';
+           spmr:isRealName 'Eddie Brock';
+           spmr:appearedIn 'Spider-Man 3';
+           spmr:hasEnemy 'spider-Man'.   
+# make this a _blank node
+_:superHero      rdf:type spmr:Character ;
+                 spmr:isRealName 'Spider-Man'.
+spmr:HarryOsborn  rdf:type spmr:Character ;
+                  spmr:hasFriend _:superHero.

@@ -1,0 +1,397 @@
+# In this RDF graph, I am representing major locations and characters from the game series Risk of Rain, with some information tied to all.
+#By David Allison-Vives da521.
+
+#Classes:
+#ust:ship
+#ust:naturalBody
+
+#gam:RiskOfRain2
+#gam:RiskOfRainReturns
+
+#Properties:
+#sur:hasSurvivor
+#sur:aboard (UES Contact Light, UES Safe travels, void, Petrichor V, moon)
+#sur:alt
+#sur:causeOfDeath
+#ust:escapeMessage
+#ust:status
+#ust:stages
+
+
+prefix ust: <http://UES-Aerospace.org>
+prefix sur: <http://SurvivorSpecs.org>
+prefix gam: <http://RiskOfRain.com>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <https://www.w3.org/TR/2023/WD-rdf12-schema-20230928/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+
+ust:contactLight rdf:type ust:ship ;
+							foaf:name "UES Contact Light" ;
+							ust:status "Destroyed" .
+							
+ust:contactLight sur:hasSurvivor ust:commando , 
+								ust:enforcer ,
+								ust:bandit ,
+								ust:huntress ,
+								ust:HAN-D ,
+								ust:engineer ,
+								ust:miner ,
+								ust:sniper ,
+								ust:acrid ,
+								ust:mercenary ,
+								ust:loader ,
+								ust:CHEF ,
+								ust:artificer ,
+								ust:pilot ,
+								ust:drifter .
+
+ust:contactLight rdfs:subClassOf gam:RiskOfRainReturns .
+
+ust:safeTravels rdf:type ust:ship ;
+							foaf:name "UES Safe Travels" ;
+							ust:status "Functional" .
+ust:safeTravels sur:hasSurvivor ust:commando ,
+								ust:bandit ,
+								ust:huntress ,
+								ust:MUL-T ,
+								ust:engineer ,
+								ust:railgunner ,
+								ust:mercenary ,
+								ust:loader ,
+								ust:artificer ,
+								ust:captain ,
+								ust:railgunner .
+
+ust:safeTravels rdfs:subClassOf gam:RiskOfRain2 .
+
+ust:petrichorV rdf:type ust:naturalBody ;
+							foaf:name "Petrichor V" ;
+							ust:status "Hostile" ;
+							ust:stages "..." ;
+							ust:hasEnemies "List" .
+							
+ust:petrichorV2 sur:hasSurvivor ust:rex ,
+								_:ms1 .
+								
+ust:petrichorV2 rdfs:subClassOf ust:petrichorV .
+								
+ust:petrichorV rdfs:subClassOf gam:RiskOfRainReturns ,
+								gam:RiskOfRain2 .
+							
+ust:moon rdf:type ust:naturalBody ;
+							foaf:name "The Moon" ;
+							ust:status "Hostile" ;
+							ust:hasEnemies "List" .
+
+ust:moon rdfs:domain ust:petrichorV .
+			rdfs:range ust:petrichorV ust:hasEnemies .
+
+ust:void rdf:type ust:naturalBody ;
+							foaf:name "Void" ;
+							ust:status "Hostile" ;
+							ust:hasEnemies "List" .
+
+ust:void sur:hasSurvivor ust:acrid ,
+								_:ms2 .
+							
+ust:void rdfs:domain ust:petrichorV .
+			rdfs:range ust:petrichorV ust:hasEnemies .
+
+
+ust:commando sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Commando" ;
+						ust:escapeMessage "..and so he left, with everything but his humanity." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+						
+ust:huntress sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Huntress" ;
+						ust:escapeMessage "..and so she left, her soul still remaining on the planet." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .		
+
+ust:enforcer sur:aboard ust:contactLight ;
+						foaf:name "Enforcer" ;
+						ust:escapeMessage "..and so he left, mutated beyond recognition." ;
+						sur:status "Escaped" ;
+						sur:alt "4" .
+						
+ust:bandit sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Bandit" ;
+						ust:escapeMessage "..and so he left, grateful for his luck." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+
+ust:HAN-D sur:aboard ust:contactLight ;
+						foaf:name "HAN-D" ;
+						ust:escapeMessage "..and so it left, servos pulsing with new life." ;
+						sur:status "Functional" ;
+						sur:alt "4" .
+						
+ust:engineer sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Engineer" ;
+						ust:escapeMessage "..and so he left, more steel and circuit than man." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+
+ust:miner sur:aboard ust:contactLight ;
+						foaf:name "Miner" ;
+						ust:escapeMessage "..and so he left, adrenaline still rushing through his veins." ;
+						sur:status "Escaped" ;
+						sur:alt "4" .
+						
+ust:sniper sur:aboard ust:contactLight ;
+						foaf:name "Sniper" ;
+						ust:escapeMessage "..and so they left, the sound still ringing in deaf ears." ;
+						sur:status "Escaped" ;
+						sur:alt "4" .
+						
+ust:acrid sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Acrid" ;
+						ust:escapeMessage "..and so it left, with delusions of freedom." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+						
+ust:mercenary sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Mercenary" ;
+						ust:escapeMessage "..and so he left, with terrible power in shaking hands." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+						
+ust:loader sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Loader" ;
+						ust:escapeMessage "..and so she left, heart still racing." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+						
+ust:CHEF sur:aboard ust:contactLight ;
+						foaf:name "CHEF" ;
+						ust:escapeMessage "..and so it left, entirely forgetting its previous purpose." ;
+						sur:status "Functional" ;
+						sur:alt "4" .
+						
+ust:artificer sur:aboard ust:contactLight , ust:safeTravels ;
+						foaf:name "Artificer" ;
+						ust:escapeMessage "..and so she left, in love with a new passion: to explore." ;
+						sur:status "Escaped" ;
+						sur:alt "5" .
+						
+ust:pilot sur:aboard ust:contactLight ;
+						foaf:name "Pilot" ;
+						ust:escapeMessage "..???" ;
+						sur:status "Escaped" ;
+						sur:alt "4" .
+						
+ust:drifter sur:aboard ust:contactLight ;
+						foaf:name "Drifter" ;
+						ust:escapeMessage "..???" ;
+						sur:status "Escaped" ;
+						sur:alt "4" .
+						
+ust:MUL-T sur:aboard ust:safeTravels ;
+						foaf:name "MUL-T" ;
+						ust:escapeMessage "..and so it left, ready to rechargee." ;
+						sur:status "Functional" ;
+						sur:alt "2" .
+						
+ust:captain sur:aboard ust:safeTravels ;
+						foaf:name "Captain" ;
+						ust:escapeMessage "..and so he left, with a new tale to tell." ;
+						sur:status "Escaped" ;
+						sur:alt "2" .
+						
+ust:REX sur:aboard ust:safeTravels ;
+						foaf:name "REX" ;
+						ust:escapeMessage "..and so it left, ready to grow into something more." ;
+						sur:status "Functional" ;
+						sur:alt "2" .
+						
+ust:railgunner sur:aboard ust:safeTravels ;
+						foaf:name "Railgunner" ;
+						ust:escapeMessage "..and so she left, ready to take her shot." ;
+						sur:status "Escaped" ;
+						sur:alt "2" .
+						
+_:ms1 sur:aboard ust:safeTravels ;
+						foaf:name "Heretic" ;
+						ust:escapeMessage "..and so they left, bitterly avenged and deeply lost." ;
+						sur:status "Missing" ;
+						sur:alt "1" .
+						
+_:ms2 sur:aboard ust:safeTravels ;
+						foaf:name "Void Fiend" ;
+						ust:escapeMessage "..and so it comes... for all of us." ;
+						sur:status "Deceased" ;
+						sur:causeOfDeath "Unknown corruption, MIA" ;
+						sur:alt "2" .
+
+
+
+
+<http://UES-Aerospace.org/contactLight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/ship> .
+<http://UES-Aerospace.org/contactLight> <http://xmlns.com/foaf/0.1/name> "UES Contact Light" .
+<http://UES-Aerospace.org/contactLight> <http://UES-Aerospace.org/status> "Destroyed" .
+<http://UES-Aerospace.org/contactLight> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRainReturns> .
+
+<http://UES-Aerospace.org/safeTravels> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/ship> .
+<http://UES-Aerospace.org/safeTravels> <http://xmlns.com/foaf/0.1/name> "UES Safe Travels" .
+<http://UES-Aerospace.org/safeTravels> <http://UES-Aerospace.org/status> "Functional" .
+<http://UES-Aerospace.org/safeTravels> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+
+<http://UES-Aerospace.org/petrichorV> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/naturalBody> .
+<http://UES-Aerospace.org/petrichorV> <http://xmlns.com/foaf/0.1/name> "Petrichor V" .
+<http://UES-Aerospace.org/petrichorV> <http://UES-Aerospace.org/status> "hostile" .
+<http://UES-Aerospace.org/petrichorV> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+<http://UES-Aerospace.org/petrichorV> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRainReturns> .
+
+<http://UES-Aerospace.org/petrichorV2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/naturalBody> .
+<http://UES-Aerospace.org/petrichorV2> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://UES-Aerospace.org/petrichorV> .
+
+<http://UES-Aerospace.org/void> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/naturalBody> .
+<http://UES-Aerospace.org/void> <http://xmlns.com/foaf/0.1/name> "The Void" .
+<http://UES-Aerospace.org/void> <http://UES-Aerospace.org/status> "hostile" .
+<http://UES-Aerospace.org/void> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+<http://UES-Aerospace.org/void> <https://www.w3.org/TR/rdf12-schema/#ch_domain> <http://UES-Aerospace.org/petrichorV> .
+<http://UES-Aerospace.org/void> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+
+<http://UES-Aerospace.org/moon> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://UES-Aerospace.org/naturalBody> .
+<http://UES-Aerospace.org/moon> <http://xmlns.com/foaf/0.1/name> "The Moon" .
+<http://UES-Aerospace.org/moon> <http://UES-Aerospace.org/status> "hostile" .
+<http://UES-Aerospace.org/moon> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+<http://UES-Aerospace.org/moon> <https://www.w3.org/TR/rdf12-schema/#ch_domain> <http://UES-Aerospace.org/petrichorV> .
+<http://UES-Aerospace.org/moon> <https://www.w3.org/TR/rdf12-schema/#ch_subclassof> <http://RiskOfRain.com/RiskOfRain2> .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/commando> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/commando> .
+<http://UES-Aerospace.org/commando> <http://xmlns.com/foaf/0.1/name> "Commando" .
+<http://UES-Aerospace.org/commando> <http://UES-Aerospace.org/escapeMessage> "..and so he left, with everything but his humanity." .
+<http://UES-Aerospace.org/commando> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/commando> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/huntress> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/huntress> .
+<http://UES-Aerospace.org/huntress> <http://xmlns.com/foaf/0.1/name> "Huntress" .
+<http://UES-Aerospace.org/huntress> <http://UES-Aerospace.org/escapeMessage> "..and so she left, her soul still remaining on the planet." .
+<http://UES-Aerospace.org/huntress> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/huntress> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/enforcer> .
+<http://UES-Aerospace.org/enforcer> <http://xmlns.com/foaf/0.1/name> "Enforcer" .
+<http://UES-Aerospace.org/enforcer> <http://UES-Aerospace.org/escapeMessage> "..and so he left, mutated beyond recognition." .
+<http://UES-Aerospace.org/enforcer> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/enforcer> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/bandit> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/bandit> .
+<http://UES-Aerospace.org/bandit> <http://xmlns.com/foaf/0.1/name> "Bandit" .
+<http://UES-Aerospace.org/bandit> <http://UES-Aerospace.org/escapeMessage> "..and so he left, grateful for his luck." .
+<http://UES-Aerospace.org/bandit> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/bandit> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/HAN-D> .
+<http://UES-Aerospace.org/HAN-D> <http://UES-Aerospace.org/escapeMessage> "..and so it left, servos pulsing with new life." .
+<http://UES-Aerospace.org/HAN-D> <http://SurvivorSpecs.org/status> "Functional" .
+<http://UES-Aerospace.org/HAN-D> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/MUL-T> .
+<http://UES-Aerospace.org/MUL-T> <http://xmlns.com/foaf/0.1/name> "MUL-T" .
+<http://UES-Aerospace.org/MUL-T> <http://UES-Aerospace.org/escapeMessage> "..and so it left, ready to recharge." .
+<http://UES-Aerospace.org/MUL-T> <http://SurvivorSpecs.org/status> "Functional" .
+<http://UES-Aerospace.org/MUL-T> <http://SurvivorSpecs.org/alt> "2" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/engineer> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/engineer> .
+<http://UES-Aerospace.org/engineer> <http://xmlns.com/foaf/0.1/name> "Engineer" .
+<http://UES-Aerospace.org/engineer> <http://UES-Aerospace.org/escapeMessage> "..and so he left, more steel and circuit than man." .
+<http://UES-Aerospace.org/engineer> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/engineer> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/sniper> .
+<http://UES-Aerospace.org/sniper> <http://xmlns.com/foaf/0.1/name> "Sniper" .
+<http://UES-Aerospace.org/sniper> <http://UES-Aerospace.org/escapeMessage> "..and so they left, the sound still ringing in deaf ears." .
+<http://UES-Aerospace.org/sniper> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/sniper> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/railgunner> .
+<http://UES-Aerospace.org/railgunner> <http://xmlns.com/foaf/0.1/name> "Railgunner" .
+<http://UES-Aerospace.org/railgunner> <http://UES-Aerospace.org/escapeMessage> "..and so she left, ready to take her shot." .
+<http://UES-Aerospace.org/railgunner> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/railgunner> <http://SurvivorSpecs.org/alt> "2" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/acrid> .
+<http://UES-Aerospace.org/void> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/acrid> .
+<http://UES-Aerospace.org/Acrid> <http://xmlns.com/foaf/0.1/name> "Acrid" .
+<http://UES-Aerospace.org/acrid> <http://UES-Aerospace.org/escapeMessage> "..and so it left, with delusions of freedom." .
+<http://UES-Aerospace.org/acrid> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/acrid> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/miner> .
+<http://UES-Aerospace.org/miner> <http://xmlns.com/foaf/0.1/name> "Miner" .
+<http://UES-Aerospace.org/miner> <http://UES-Aerospace.org/escapeMessage> "..and so he left, adrenaline still rushing through his veins." .
+<http://UES-Aerospace.org/miner> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/miner> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/mercenary> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/mercenary> .
+<http://UES-Aerospace.org/mercenary> <http://xmlns.com/foaf/0.1/name> "Mercenary" .
+<http://UES-Aerospace.org/mercenary> <http://UES-Aerospace.org/escapeMessage> "..and so he left, with terrible power in shaking hands." .
+<http://UES-Aerospace.org/mercenary> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/mercenary> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/loader> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/loader> .
+<http://UES-Aerospace.org/loader> <http://xmlns.com/foaf/0.1/name> "Loader" .
+<http://UES-Aerospace.org/loader> <http://UES-Aerospace.org/escapeMessage> "..and so she left, heart still racing." .
+<http://UES-Aerospace.org/loader> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/loader> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/CHEF> .
+<http://UES-Aerospace.org/CHEF> <http://xmlns.com/foaf/0.1/name> "CHEF Bot" .
+<http://UES-Aerospace.org/CHEF> <http://UES-Aerospace.org/escapeMessage> "..and so it left, entirely forgetting its previous purpose." .
+<http://UES-Aerospace.org/CHEF> <http://SurvivorSpecs.org/status> "Functional" .
+<http://UES-Aerospace.org/CHEF> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/artificer> .
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/artificer> .
+<http://UES-Aerospace.org/artificer> <http://xmlns.com/foaf/0.1/name> "Artificer" .
+<http://UES-Aerospace.org/artificer> <http://UES-Aerospace.org/escapeMessage> "..and so she left, in love with a new passion: to explore." .
+<http://UES-Aerospace.org/artificer> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/artificer> <http://SurvivorSpecs.org/alt> "5" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/pilot> .
+<http://UES-Aerospace.org/pilot> <http://xmlns.com/foaf/0.1/name> "Pilot" .
+<http://UES-Aerospace.org/pilot> <http://UES-Aerospace.org/escapeMessage> "..???" .
+<http://UES-Aerospace.org/pilot> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/pilot> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/safeTravels> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/captain> .
+<http://UES-Aerospace.org/captain> <http://xmlns.com/foaf/0.1/name> "Captain" .
+<http://UES-Aerospace.org/captain> <http://UES-Aerospace.org/escapeMessage> "..and so he left, with a new tale to tell." .
+<http://UES-Aerospace.org/captain> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/captain> <http://SurvivorSpecs.org/alt> "2" .
+
+<http://UES-Aerospace.org/contactLight> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/drifter> .
+<http://UES-Aerospace.org/drifter> <http://xmlns.com/foaf/0.1/name> "Drifter" .
+<http://UES-Aerospace.org/drifter> <http://UES-Aerospace.org/escapeMessage> "..???" .
+<http://UES-Aerospace.org/drifter> <http://SurvivorSpecs.org/status> "Escaped" .
+<http://UES-Aerospace.org/drifter> <http://SurvivorSpecs.org/alt> "4" .
+
+<http://UES-Aerospace.org/petrichorV2> <http://SurvivorSpecs.org/hasSurvivor> <http://UES-Aerospace.org/REX> .
+<http://UES-Aerospace.org/REX> <http://xmlns.com/foaf/0.1/name> "REX" .
+<http://UES-Aerospace.org/REX> <http://UES-Aerospace.org/escapeMessage> "..and so it left, ready to grow into something more." .
+<http://UES-Aerospace.org/REX> <http://SurvivorSpecs.org/status> "Functional" .
+<http://UES-Aerospace.org/REX> <http://SurvivorSpecs.org/alt> "2" .
+
+<http://UES-Aerospace.org/petrichorV2> <http://SurvivorSpecs.org/hasSurvivor> _:ms1 .
+_:ms1 <http://xmlns.com/foaf/0.1/name> "Heretic" .
+_:ms1 <http://UES-Aerospace.org/escapeMessage> "..and so they left, bitterly avenged and deeply lost." .
+_:ms1 <http://SurvivorSpecs.org/status> "Missing" .
+_:ms1 <http://SurvivorSpecs.org/alt> "2" .
+
+<http://UES-Aerospace.org/void> <http://SurvivorSpecs.org/hasSurvivor> _:ms2 .
+_:ms2 <http://xmlns.com/foaf/0.1/name> "Void Fiend" .
+_:ms2 <http://UES-Aerospace.org/escapeMessage> "..and so it comes... for all of us." .
+_:ms2 <http://SurvivorSpecs.org/status> "Deceased" .
+_:ms2 <http://SurvivorSpecs.org/causeOfDeath> "Unknown corruption, MIA" .
+_:ms2 <http://SurvivorSpecs.org/alt> "2" .

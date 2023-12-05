@@ -1,0 +1,61 @@
+#PART 1
+
+#a)
+# My chosen domain is based on the fictional universe of Percy Jackson 
+# From the Percy Jackson book series.
+# The domain is based on the main character Percy Jackson who is a demigod and his life 
+# In the first book, "Percy Jackson and The Lightning Thief."
+# The information I will be representing are facts about Percy Jackson,
+# His various friendships, genealogy, occupation, residence and possessions throughout the book.
+# The graph captures the relationships, and other types of entities in the Percy Jackson universe.
+# Finally I chose Percy Jackson as my domain to model due to the strong
+# Ties in the book to greek mythology.
+
+
+#b) 
+@prefix pj: <https://percyjackson.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+
+#e)
+# 20 Triples about Percy Jackson
+
+pj:PercyJackson rdf:type pj:Demigod ;
+    foaf:name "Perseus Jackson" ;
+    pj:hasParent pj:Poseidon, pj:SallyJackson ;
+    pj:hasFriend pj:Grover, pj:Annabeth, pj:Tyson, pj:Thalia ;
+    pj:hasWeapon pj:Riptide ;
+    pj:hasPower "Water Manipulation And Speaking to Horses" ;
+    pj:dwellsIn pj:CampHalfBlood ;
+    pj:hasPossession pj:AnaklusmosPen .
+
+pj:Poseidon rdf:type pj:God ;
+    pj:residesIn pj:MountOlympus ;
+    pj:hasChild pj:PercyJackson ;
+    pj:hasPossession pj:Trident ;
+    pj:memberOf pj:Olympian ;
+    pj:hasPower "Water Manipulation, Speaking/Creating Horses, Creating Earthquakes" .
+
+pj:Grover rdf:type pj:Satyr ;
+    pj:dwellsIn pj:CampHalfBlood ;
+    pj:hasFriend pj:Grover, pj:Annabeth, pj:Tyson .
+    _:Grover foaf:knows _:Tyson .
+
+pj:Annabeth rdf:type pj:Demigod ;
+    foaf:name "Annabeth Chase" ;
+    pj:hasParent pj:Athena ;
+    pj:hasWeapon pj:DaggerOfAthena ;
+    pj:hasFriend pj:Grover, pj:PercyJackson, pj:Thalia ;
+    pj:dwellsIn pj:CampHalfBlood .
+    _:Annabeth foaf:knows _:Tyson .	
+
+pj:SallyJackson rdf:type pj:Mortal ;
+    pj:dwellsIn "New York" .
+
+pj:Tyson rdf:type pj:Supernatural ;
+    pj:hasParent pj:Poseidon ;
+    pj:hasPower "Weapon Enhancement" .
+
+pj:AnaklusmosPen rdf:type pj:Weapon .

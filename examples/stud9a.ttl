@@ -1,0 +1,73 @@
+#c)
+
+# Classes
+
+:Supernatural rdf:type rdfs:Class  ;
+	rdfs:label "Supernatural" ;
+	
+:Olympian rdf:type rdfs:Class ;
+	rdfs:label "Olympian" ; 
+	
+:God rdf:type rdfs:Class ;
+	rdfs:label "God" ;
+	rdfs:comment "A powerful immortal being in Greek Mythology." .
+	
+:Demigod rdf:type rdfs:Class ;
+    rdfs:label "Demigod" ;
+    rdfs:comment "Child of a god and a mortal, possessing both human and divine qualities." .
+
+:Mortal rdf:type rdfs:Class ;
+    rdfs:label "Mortal" ;
+    rdfs:comment "A human being without divine or attributes. Also known as a mundane." .
+
+:Satyr rdf:type rdfs:Class ;
+    rdfs:label "Satyr" ;
+    rdfs:comment "A mythical creature with human and goat-like features." .	
+	
+:Weapon rdf:type rdfs:Class ;
+	rdfs:label "Weapon" ;
+	
+
+# Properties
+:memberOf rdf:type rdf:Property ;
+	rdfs:label "memberOf";
+	
+:hasParent rdf:type rdf:Property ;
+    rdfs:label "hasParent" ;
+	
+:hasChild rdf:type rdf:Property ;
+    rdfs:label "hasChild" ;
+	
+:hasFriend rdf:type rdf:Property ;
+    rdfs:label "hasFriend" ;
+	
+:hasWeapon rdf:type rdf:Property ;
+    rdfs:label "hasWeapon" ;
+	
+:hasPower rdf:type rdf:Property ;
+    rdfs:label "hasPower" ;
+	
+:residesIn rdf:type rdf:Property ;
+    rdfs:label "residesIn" ;
+	
+:dwellsIn rdf:type rdf:Property ;
+	rdfs:label "dwellsIn" ;
+	
+:hasPossession rdf:type rdf:Property ;
+	rdfs:label "hasPossession" ;
+	
+#d)
+# The range of residesIn is CampHalfBlood
+:residesIn rdfs:range :CampHalfBlood .
+
+# The range of dwellsIn is MountOlympus
+:residesIn rdfs:range :MountOlympus .
+
+#God is a subclass of Supernatural
+:God rdfs:subClassOf rdf:Supernatural
+
+#Satyr is a subclass of Supernatural
+:Satyr rdfs:subClassOf rdf:Supernatural .
+
+# If someone has a child, they are also a parent
+:hasChild rdfs:subPropertyOf :hasParent .

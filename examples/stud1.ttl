@@ -1,0 +1,228 @@
+# I've chosen the 2022 world cup as my domain. The information I've chosen to represent is the participating countries, the captains of each country, the coaches of each country, some players that played, some matches played and the results.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix wc2022: <https://worldcup2022.org/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+
+wc2022:Country rdf:type rdfs:Class;
+    rdfs:label "Country".
+
+wc2022:Player rdf:type rdfs:Class;
+    rdfs:label "Player".
+
+wc2022:Captain rdf:type rdfs:Class;
+    rdfs:label "Captain".
+
+wc2022:Coach rdf:type rdfs:Class;
+    rdfs:label "Coach".
+
+wc2022:Match rdf:type rdfs:Class;
+    rdfs:label "Match".
+
+wc2022:GoalEvent rdf:type rdfs:Class;
+    rdfs:label "GoalEvent".
+
+
+wc2022:captainOf rdf:type rdf:Property;
+    rdfs:label "captainOf";
+    rdfs:domain wc2022:Captain;
+    rdfs:range wc2022:Country.
+
+wc2022:coachOf rdf:type rdf:Property;
+    rdfs:label "coachOf";
+    rdfs:domain wc2022:Coach;
+    rdfs:range wc2022:Country.
+
+wc2022:team1 rdf:type rdf:Property;
+    rdfs:label "team1";
+    rdfs:domain wc2022:Match;
+    rdfs:range wc2022:Country.
+
+wc2022:team2 rdf:type rdf:Property;
+    rdfs:label "team2";
+    rdfs:domain wc2022:Match;
+    rdfs:range wc2022:Country.
+
+wc2022:result rdf:type rdf:Property;
+    rdfs:label "result";
+    rdfs:domain wc2022:Match;
+    rdfs:range xsd:string.
+
+wc2022:hasPosition rdf:type rdf:Property;
+    rdfs:label "hasPosition";
+    rdfs:domain wc2022:Player;
+    rdfs:range xsd:string.
+
+wc2022:hasEvent rdf:type rdf:Property;
+    rdfs:label "hasEvent";
+    rdfs:domain wc2022:Match;
+    rdfs:range wc2022:Event.
+
+wc2022:isPartOf rdf:type rdf:Property;
+    rdfs:label "isPartOf";
+    rdfs:domain wc2022:Player;
+    rdfs:range wc2022:Country.
+
+
+wc2022:Captain rdfs:subClassOf wc2022:Player.
+wc2022:scoredBy rdfs:subPropertyOf wc2022:hasEvent.
+wc2022:scoredBy rdfs:domain wc2022:GoalEvent;
+               rdfs:range wc2022:Player.
+
+
+wc2022:France rdf:type wc2022:Country.
+wc2022:Morocco rdf:type wc2022:Country.
+wc2022:Argentina rdf:type wc2022:Country.
+wc2022:Croatia rdf:type wc2022:Country.
+wc2022:Brazil rdf:type wc2022:Country.
+wc2022:England rdf:type wc2022:Country.
+wc2022:Netherlands rdf:type wc2022:Country.
+wc2022:Portugal rdf:type wc2022:Country.
+
+
+wc2022:HugoLloris rdf:type wc2022:Captain;
+    foaf:name "Hugo Lloris";
+    wc2022:hasPosition "Goalkeeper";
+    wc2022:captainOf wc2022:France.
+
+wc2022:RomainSaiss rdf:type wc2022:Captain;
+    foaf:name "Romain Saiss";
+    wc2022:hasPosition "Defender";
+    wc2022:captainOf wc2022:Morocco.
+
+wc2022:LionelMessi rdf:type wc2022:Captain;
+    foaf:name "Lionel Messi";
+    wc2022:hasPosition "Forward";
+    wc2022:captainOf wc2022:Argentina.
+
+wc2022:LukaModric rdf:type wc2022:Captain;
+    foaf:name "Luka Modric";
+    wc2022:hasPosition "Midfielder";
+    wc2022:captainOf wc2022:Croatia.
+
+wc2022:ThiagoSilva rdf:type wc2022:Captain;
+    foaf:name "Thiago Silva";
+    wc2022:hasPosition "Defender";
+    wc2022:captainOf wc2022:Brazil.
+
+wc2022:HarryKane rdf:type wc2022:Captain;
+    foaf:name "Harry Kane";
+    wc2022:hasPosition "Forward";
+    wc2022:captainOf wc2022:England.
+
+wc2022:VirgilVanDijk rdf:type wc2022:Captain;
+    foaf:name "Virgil Van Dijk";
+    wc2022:hasPosition "Defender";
+    wc2022:captainOf wc2022:Netherlands.
+
+wc2022:CristianoRonaldo rdf:type wc2022:Captain;
+    foaf:name "Cristiano Ronaldo";
+    wc2022:hasPosition "Forward";
+    wc2022:captainOf wc2022:Portugal.
+
+
+wc2022:DidierDeschamps rdf:type wc2022:Coach;
+    foaf:name "Didier Deschamps";
+    wc2022:coachOf wc2022:France.
+
+wc2022:WalidRegragui rdf:type wc2022:Coach;
+    foaf:name "Walid Regragui";
+    wc2022:coachOf wc2022:Morocco.
+
+wc2022:LionelScaloni rdf:type wc2022:Coach;
+    foaf:name "Lionel Scaloni";
+    wc2022:coachOf wc2022:Argentina.
+
+wc2022:ZlatkoDalic rdf:type wc2022:Coach;
+    foaf:name "Zlatko Dalic";
+    wc2022:coachOf wc2022:Croatia.
+
+wc2022:Tite rdf:type wc2022:Coach;
+    foaf:name "Tite";
+    wc2022:coachOf wc2022:Brazil.
+
+wc2022:GarethSouthgate rdf:type wc2022:Coach;
+    foaf:name "Gareth Southgate";
+    wc2022:coachOf wc2022:England.
+
+wc2022:LouisVanGaal rdf:type wc2022:Coach;
+    foaf:name "Louis Van Gaal";
+    wc2022:coachOf wc2022:Netherlands.
+
+wc2022:FernandoSantos rdf:type wc2022:Coach;
+    foaf:name "Fernando Santos";
+    wc2022:coachOf wc2022:Portugal.
+
+
+wc2022:Match1 rdf:type wc2022:Match;
+    wc2022:team1 wc2022:France;
+    wc2022:team2 wc2022:Morocco;
+    wc2022:result "2-0".
+
+wc2022:Match2 rdf:type wc2022:Match;
+    wc2022:team1 wc2022:Argentina;
+    wc2022:team2 wc2022:Croatia;
+    wc2022:result "3-0".
+
+
+wc2022:TheoHernandez rdf:type wc2022:Player;
+    foaf:name "Theo Hernandez";
+    wc2022:hasPosition "Defender";
+    wc2022:isPartOf wc2022:France.
+
+wc2022:RandalKoloMuani rdf:type wc2022:Player;
+    foaf:name "Randal Kolo Muani";
+    wc2022:hasPosition "Forward";
+    wc2022:isPartOf wc2022:France.
+
+wc2022:RafaelLeao rdf:type wc2022:Player;
+    foaf:name "Rafael Leao";
+    wc2022:hasPosition "Forward";
+    wc2022:isPartOf wc2022:Portugal.
+
+wc2022:SofyanAmrabat rdf:type wc2022:Player;
+    foaf:name "Sofyan Amrabat";
+    wc2022:hasPosition "Midfielder";
+    wc2022:isPartOf wc2022:Morocco.
+
+wc2022:JulianAlvarez rdf:type wc2022:Player;
+    foaf:name "Julian Alvarez";
+    wc2022:hasPosition "Forward";
+    wc2022:isPartOf wc2022:Argentina.
+
+
+[ rdf:type wc2022:Match;
+  wc2022:team1 wc2022:France;
+  wc2022:team2 wc2022:Morocco;
+  wc2022:result "2-0";
+  wc2022:hasEvent [ 
+    rdf:type wc2022:GoalEvent;
+    wc2022:scoredBy wc2022:TheoHernandez;
+    ];
+  wc2022:hasEvent [ 
+    rdf:type wc2022:GoalEvent;
+    wc2022:scoredBy wc2022:RandalKoloMuani;
+    ];
+].
+
+[
+  rdf:type wc2022:Match;
+  wc2022:team1 wc2022:Argentina;
+  wc2022:team2 wc2022:Croatia;
+  wc2022:result "3-0";
+  wc2022:hasEvent [
+    rdf:type wc2022:GoalEvent;
+    wc2022:scoredBy wc2022:LionelMessi;
+  ];
+  wc2022:hasEvent [
+    rdf:type wc2022:GoalEvent;
+    wc2022:scoredBy wc2022:JulianAlvarez;
+  ];
+  wc2022:hasEvent [
+    rdf:type wc2022:GoalEvent;
+    wc2022:scoredBy wc2022:JulianAlvarez;
+  ];
+].

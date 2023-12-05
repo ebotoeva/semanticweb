@@ -1,0 +1,91 @@
+# My graph provides details about different skincare products, including the type of product, ingredients, and different brands.
+
+# prefix
+@prefix sc: <http://example.org/skincare#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+# vocabulary
+  # Classes
+  sc:SkincareProduct rdf:type rdfs:Class.
+  sc:ProductType rdf:type rdfs:Class.
+  sc:Ingredient rdf:type rdfs:Class.
+  sc:Brand rdf:type rdfs:Class.
+
+  # Properties
+  sc:hasType rdf:type rdf:Property.
+  sc:containsIngredient rdf:type rdf:Property.
+  sc:hasBrand rdf:type rdf:Property.
+  sc:isOfType rdf:type rdf:Property.
+
+# Axioms
+  # Skincare products like Moisturiser are a subclass of the general SkincareProduct class.
+  sc:Moisturiser rdf:type rdfs:Class.
+  sc:Moisturiser rdfs:subClassOf sc:SkincareProduct.
+
+  # The property 'containsIngredient' has a domain of SkincareProduct
+  sc:containsIngredient rdfs:domain sc:SkincareProduct.
+
+
+# Skincare Facts
+# Products
+sc:serum1 rdf:type sc:SkincareProduct.
+sc:sunscreen1 rdf:type sc:SkincareProduct.
+sc:cleanser1 rdf:type sc:SkincareProduct.
+sc:Moisturiser1 rdf:type sc:Moisturiser.
+sc:ingredient1 rdf:type sc:Ingredient.
+sc:ingredient2 rdf:type sc:Ingredient.
+sc:brand1 rdf:type sc:Brand.
+sc:brand2 rdf:type sc:Brand.
+
+# Product Relationships
+sc:serum1 sc:hasType sc:Serum.
+sc:serum1 sc:containsIngredient sc:ingredient2.
+sc:serum1 sc:hasBrand sc:brand1.
+sc:sunscreen1 sc:hasType sc:Sunscreen.
+sc:sunscreen1 sc:containsIngredient sc:ingredient1.
+sc:sunscreen1 sc:hasBrand sc:brand2.
+sc:cleanser1 sc:hasType sc:Cleanser.
+sc:cleanser1 sc:containsIngredient sc:ingredient1.
+sc:cleanser1 sc:hasBrand sc:brand1.
+sc:Moisturiser1 sc:hasType sc:Moisturiser.
+sc:Moisturiser1 sc:containsIngredient sc:ingredient2.
+sc:Moisturiser1 sc:hasBrand sc:brand2.
+
+# Ingredient Details
+sc:ingredient1 sc:hasName "Hyaluronic Acid".
+sc:ingredient1 sc:isOfType "Hydrating Ingredient".
+sc:ingredient2 sc:hasName "Vitamin C".
+sc:ingredient2 sc:isOfType "Brightening Ingredient".
+
+# Brand Names
+sc:brand1 sc:hasName "Olay".
+sc:brand2 sc:hasName "Cetaphil".
+
+# Product Types
+sc:serum1 sc:isOfType sc:SkincareProduct.
+
+# Product Details
+sc:serum1 sc:hasDetails [
+  sc:recommendedUsage "Morning and night" ;
+  sc:amount "30ml" ;
+  sc:price 20.99 ;
+  sc:speciality "Anti Aging" ;
+  sc:benefits "Evens skin tone, reduces fine lines"
+].
+
+sc:sunscreen1 sc:hasDetails [
+  sc:recommendedUsage "Daily, in the morning" ;
+  sc:amount "50ml" ;
+  sc:price 17.99 ;
+  sc:speciality "Sun Protection" ;
+  sc:benefits "Blocks UV rays, prevents sunburn"
+].
+
+sc:cleanser1 sc:hasDetails [
+  sc:recommendedUsage "Twice daily" ;
+  sc:amount "200ml" ;
+  sc:price 5.99 ;
+  sc:speciality "Exfoliating" ;
+  sc:benefits "Removes impurities, unclogs pores"
+].

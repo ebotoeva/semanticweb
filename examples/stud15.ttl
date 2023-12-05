@@ -1,0 +1,110 @@
+# a) 
+#
+# The domain chosen for this Assignment is the England teams int the FIFA World cup 2022. 
+# The chosen information that will be represented is information about the members of the squad, players, positions, games they played and the goals that they have scored.
+
+# b) 
+#
+PREFIX ef: <http://England-Fifa2022.org/#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# c) 
+#
+ef:Player a rdfs:Class .
+ef:Goal a rdfs:Class .
+ef:Goals a rdfs:Class .
+ef:Position a rdf:Class .
+ef:Squad a rdfs:Class .
+ef:Coach a rdfs:Class .
+ef:Game a rdfs:Class .
+ef:playsAt a rdf:Property .
+ef:hasScored a rdf:Property .
+ef:isGameNo a rdf:Property .
+ef:goalsScored a rdf:Property .
+ef:hasPlayedIn a rdf:Property .
+
+
+
+# d) 
+#
+#Like Class 2 exercises I will be commenting on what the code does
+
+# Player has Scored a Goal or not
+ef:hasScored rdfs:range ef:Goal .
+ef:hasScored rdfs:domain ef:Player .
+
+# Player plays at a certain position
+ef:playsAt rdfs:range ef:Position .
+ef:playsAt rdfs:domain ef:Player .
+
+# Player plays at a certain game
+ef:hasPlayedIn rdfs:range ef:Game .
+ef:hasPlayedIn rdfs:domain ef:Player .
+
+# Player has Scored how many Goals
+ef:goalsScored rdfs:range ef:Goals .
+ef:goalsScored rdfs:domain ef:Player .
+
+# A Player/Coach is part of the squad
+ef:Player rdfs:subClassOf ef:Squad. 
+ef:Coach rdfs:subClassOf ef:Squad. 
+
+
+# e) 
+#
+
+ef:England rdf:type ef:Squad.
+
+ef:JudeB rdf:type ef:Player;
+         ef:playsAt "Striker";
+         ef:hasScored "yes";
+         ef:playedIn _:Game1, _:Game2;
+         ef:goalsScored "1".
+
+ef:HarryM rdf:type ef:Player;
+          ef:playsAt "Defender";
+          ef:hasScored "yes";
+          ef:playedIn _:Game1, _:Game2, _:Game3;
+          ef:goalsScored "1".
+
+ef:JordanP rdf:type ef:Player;
+           ef:playsAt "GoalKeeper";
+           ef:hasScored "no";
+           ef:playedIn _:Game1, _:Game2, _:Game3, _:Game4, _:Game5;
+           ef:goalsScored "0".
+
+ef:HarryK rdf:type ef:Player;
+          ef:playsAt "Striker";
+          ef:hasScored "yes";
+          ef:playedIn _:Game1, _:Game3, _:Game4, _:Game5;
+          ef:goalsScored "4".
+
+ef:Raheem rdf:type ef:Player;
+          ef:playsAt "Striker";
+          ef:hasScored "yes";
+          ef:playedIn _:Game1, _:Game4, _:Game5;
+          ef:goalsScored "2".
+
+ef:JamesM rdf:type ef:Player;
+          ef:playsAt "Defender";
+          ef:hasScored "No";
+          ef:playedIn _:Game1, _:Game3, _:Game4;
+          ef:goalsScored "0".
+
+ef:Bukayo rdf:type ef:Player;
+          ef:playsAt "Striker";
+          ef:hasScored "yes";
+          ef:playedIn _:Game3, _:Game4, _:Game5;
+          ef:goalsScored "2".
+
+ef:KyleW  rdf:type ef:Player;
+          ef:playsAt "Defender";
+          ef:hasScored "No";
+          ef:playedIn _:Game1, _:Game3, _:Game5;
+          ef:goalsScored "0".
+
+ef:GarethS rdf:type ef:Coach.
+
+ef:FraEng rdf:type ef:Game;
+	  ef:isGameNo _:Game5.

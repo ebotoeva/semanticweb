@@ -1,0 +1,115 @@
+    # The domain includes details of international football players, including teams they play for, caps, goals etc. 
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+    PREFIX foot: <http://theplayers.org/vocabulary#> 
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+    # Class
+    foot:Player rdf:type rdf:Class ;
+        rdf:label "Player" .
+
+    foot:Position rdf:type rdf:Class ;
+        rdf:label "Position" .
+
+    foot:Team rdf:type rdf:Class ;
+        rdf:label "Team" .
+
+    foot:homeCountry rdf:type rdf:Class ;
+        rdf:label "Country" .
+
+    foot:striker rdf:type rdf:Class ;
+        rdf:label "Striker" ;
+        rdf:subClassOf foot:Position .
+
+      foot:midfielder rdf:type rdf:Class ;
+        rdf:label "Midfield" ;
+        rdf:subClassOf foot:Position .
+
+      foot:defender rdf:type rdf:Class ;
+        rdf:label "Defender" ;
+        rdf:subClassOf foot:Position .
+
+     foot:goalkeeper rdf:type rdf:Class ;
+        rdf:label "Goalkeeper" ;
+        rdf:subClassOf foot:Position .
+    
+
+    # Property
+    foot:isPosition rdf:type rdf:Property;
+        rdf:domain foot:Player ;
+        rdf:range foot:Position . 
+
+    foot:playsFor rdf:type rdf:Property;
+        rdf:domain foot:Player ;
+        rdf:range foot:Team . 
+
+    foot:isNationality rdf:type rdf:Property;
+        rdf:domain foot:Player ;
+        rdf:range foot:homeCountry . 
+    
+    foot:goalsScored rdf:type rdf:Property;
+        rdf:domain foot:Player ;
+        rdf:range xsd:int . 
+
+    foot:goalsPrevented rdf:type rdf:Property;
+        rdf:domain foot:goalkeeper ;
+        rdf:range xsd:int . 
+
+    # Players
+    foot:Messi rdf:label "Lionel Messi" ;
+            rdf:type foot:Player ;
+            foot:isNationality "Argentina" ;
+            foot:isPosition foot:striker ;
+            foot:playsFor "Inter Miami" ;
+            foot:goalsScored "800"^^xsd:int .
+
+    foot:Rashford rdf:label "Marcus Rashford" ;
+            rdf:type foot:Player ;
+            foot:isNationality "English" ;
+            foot:isPosition foot:striker ;
+            foot:playsFor "Manchester United" ;
+            foot:goalsScored "100"^^xsd:int .
+
+    foot:Haaland rdf:label "Erling Haaland" ;
+            rdf:type foot:Player ;
+            foot:isNationality "Norwegian" ;
+            foot:isPosition foot:striker ;
+            foot:playsFor "Manchester City" ;
+            foot:goalsScored "305"^^xsd:int .
+
+    foot:Kane rdf:label "Harry Kane" ;
+            rdf:type foot:Player ;
+            foot:isNationality "English" ;
+            foot:isPosition foot:striker ;
+            foot:playsFor "Bayern Munich" ;
+            foot:goalsScored "378"^^xsd:int .
+
+    foot:Lewandowski rdf:label "Robert Lewandowski" ;
+            rdf:type foot:Player ;
+            foot:isNationality "Polish" ;
+            foot:isPosition foot:striker ;
+            foot:goalsScored "646"^^xsd:int .
+
+
+    foot:Assulin rdf:label "Gai Assulin" ;
+            rdf:type foot:Player ;
+            foot:isNationality "Israeli" ;
+            foot:isPosition foot:midfielder ;
+            foot:goalsScored "22"^^xsd:int .
+
+    foot:Postecoglou rdf:label "Ange Postecoglou" ;
+            rdf:type foot:_:b ;
+            foot:isNationality "Greek" .
+
+    foot:Stones rdf:label "John Stones" ;
+            rdf:type foot:Player ;
+            foot:isNationality "English" ;
+            foot:isPosition foot:defender ;
+            foot:goalsScored "2"^^xsd:int .
+
+    
+    foot:Neuer rdf:label "Manuel Neuer" ;
+            rdf:type foot:Player ;
+            foot:isNationality "German" ;
+            foot:isPosition foot:goalkeeper ;
+            foot:playsFor "Bayern Munich" ;
+            foot:goalsPrevented "5"^^xsd:int .
