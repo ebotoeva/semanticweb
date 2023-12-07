@@ -1,0 +1,120 @@
+# I will be modelling information about 'Cooking different types of Thai food' to represent in an RDF graph. 
+# I will be representing the type of Thai dishes you can make including if they are noodles, curries, rice, stir-frys, soup etc.
+# Also showing where the Thai dishes orginated from in Thailand such as North, Central or South  
+
+#Individuals 
+#Northern Thailand -- <https://thaiFood.co.uk/northern>
+#Central Thailand -- <https://thaiFood.co.uk/central>
+#Southern Thaland -- <https://thaiFood.co.uk/southern> 
+#Pad Thai -- <https://thaiFood.co.uk/Pad-Thai>
+#Pad Kee Mao -- <https://thaiFood.co.uk/Pad-Kee-Mao>
+#Thai Green -- <https://thaiFood.co.uk/Thai-Green>
+#Thai Red -- <https://thaiFood.co.uk/Thai-Red>
+#Khao Pad -- <https://thaiFood.co.uk/Khao-Pad>
+#Coconut Rice -- <https://thaiFood.co.uk/Coconut-Rice>
+#Tom Kha -- <https://thaiFood.co.uk/Tom-Kha>
+#Tom Yum -- <https://thaiFood.co.uk/Tom-Yum>
+#Pad Kra Pao -- <https://thaiFood.co.uk/Pad-Kra-Pao>
+#Pad Sataw -- <https://thaiFood.co.uk/Pad-Sataw> 
+#Coconut Milk -- <https://thaiFood.co.uk/Coconut-Milk> 
+#Holy Basil -- <https://thaiFood.co.uk/Holy-Basil> 
+
+#Classes
+#Thai Food -- <https://thaiFood.co.uk/ThaiFood>  
+#noodle -- <https://thaiFood.co.uk/noodle>
+#curry -- <https://thaiFood.co.uk/curry>
+#rice -- <https://thaiFood.co.uk/rice>
+#stir-fry -- <https://thaiFood.co.uk/stirFry>
+#soup -- <https://thaiFood.co.uk/soup>
+
+#Properties
+#is from -- <https://thaiFood.co.uk/isFrom> 
+#categorized as -- <https://thaiFood.co.uk/categorizedAs> 
+#has spiceness Level -- <https://thaiFood.co.uk/hasSpicenessLevel> 
+#contains ingredients -- <https://thaiFood.co.uk/containsIngredient>
+#also called -- <https://thaiFood.co.uk/alsoCalled> 
+
+@prefix thFood: <https://thaiFood.co.uk> .
+@prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+
+#Classes
+thFood:ThaiFood rdf:type rdf:Class ;
+        rdfs:label "Thai Food" . 
+thFood:noodle rdf:type rdf:Class ;
+        rdfs:subClassOf thFood:ThaiFood .
+thFood:curry rdf:type rdf:Class ;
+        rdfs:subClassOf thFood:ThaiFood .
+thFood:rice rdf:type rdf:Class ;
+        rdfs:subClassOf thFood:ThaiFood .
+thFood:stirFry rdf:type rdf:Class ;
+        rdfs:subClassOf thFood:ThaiFood .
+thFood:soup rdf:type rdf:Class ;
+        rdfs:subClassOf thFood:ThaiFood .
+
+#Properties
+thFood:isFrom rdf:type rdf:Property .
+thFood:categorizedAs rdf:type rdf:Property .
+thFood:hasSpicenessLevel rdf:type rdf:Property .
+thFood:containsIngredient rdf:type rdf:Property .
+
+thFood:Food  rdf:type    rdfs:Class ; 
+             rdfs: subClassOf    thFood: AsianCuisine .
+
+thFood:isFrom   rdf:type    rdf:Property ;
+                rdfs:subPropertyOf  thFood:orginates .
+
+thFood:isFrom   rdf:type    rdf:Property ;
+                rdfs:domain     thFood:location .      ### E: these two axioms (domain and range) are confusing. Should the domain be Food? and the range locatin?
+                rdfs:range      thFood:AsianCuisine .
+
+
+thFood:Pad-Thai   rdf:type    thFood:ThaiFood ;
+            thFood:categorizedAs    thFood:noodle;    ### E: you said that noodle was a class. So I would not expect to see noodle as the object here. I would rather expect to see: "Pad-Thai rdf:type thFood:noodle"
+            thFood:isFrom   thFood: central ;
+            thFood:hasSpicenessLevel "mild" .
+
+thFood:Pad-Kee-Mao  thFood:categorizedAs  thFood:noodle;
+            thFood:isFrom   thFood:northern ;
+            thFood:hasSpicenessLevel "medium" .
+_:x thFood:alsoCalled   thFood:name "Drunken-Noodles" .
+
+
+thFood:Thai-Green  thFood:categorizedAs  thFood:curry;
+            thFood:isFrom   thFood:central .
+            thFood:hasSpicenessLevel "hot" .
+            thFood:containsIngredient thFood:Coconut-Milk .
+            
+
+thFood:Thai-Red  thFood:categorizedAs  thFood:curry;
+            thFood:isFrom   thFood:central . 
+            thFood:hasSpicenessLevel "hot" .
+            thFood:containsIngredient thFood:Coconut-Milk .
+
+thFood:Khao-Pad  thFood:categorizedAs  thFood:rice;
+            thFood:isFrom  thFood:central . 
+            thFood:hasSpicenessLevel "mild" .
+_:x thFood:alsoCalled   thFood:name "Stir-Fried-Rice" .
+
+thFood:Coconut-Rice  thFood:categorizedAs  thFood:rice;
+            thFood:isFrom   thFood:southern .
+            thFood:containsIngredient thFood:Coconut-Milk .
+
+thFood:Tom-Kha  thFood:categorizedAs  thFood:soup;
+            thFood:isFrom   thFood:central .
+            thFood:containsIngredient thFood:Coconut-Milk .
+
+thFood:Tom-Yum  thFood:categorizedAs  thFood:soup;
+            thFood:isFrom   thFood:central .
+            thFood:hasSpicenessLevel "medium" .
+
+thFood:Pad-Kra-Pao  thFood:categorizedAs  thFood:stirFry;
+            thFood:isFrom   thFood:northern .
+            thFood:containsIngredient thFood:Holy-Basil .
+            thFood:hasSpicenessLevel "hot" .
+
+thFood:Pad-Sataw  thFood:categorizedAs  thFood:stirFry;
+            thFood:isFrom   thFood:southern .
+_:x thFood:alsoCalled   thFood:name "Stir-Fried-Stink-Beans" .
+
+
