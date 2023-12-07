@@ -53,10 +53,10 @@ thFood:soup rdf:type rdf:Class ;
         rdfs:subClassOf thFood:ThaiFood .
 
 #Properties
-thFood:isFrom rdf:type rdf:Property ;
-thFood:categorizedAs rdf:type rdf:Property ;
-thFood:hasSpicenessLevel rdf:type rdf:Property ;
-thFood:containsIngredient rdf:type rdf:Property ;
+thFood:isFrom rdf:type rdf:Property .
+thFood:categorizedAs rdf:type rdf:Property .
+thFood:hasSpicenessLevel rdf:type rdf:Property .
+thFood:containsIngredient rdf:type rdf:Property .
 
 thFood:Food  rdf:type    rdfs:Class ; 
              rdfs: subClassOf    thFood: AsianCuisine .
@@ -77,7 +77,6 @@ thFood:Pad-Thai   rdf:type    thFood:ThaiFood ;
 thFood:Pad-Kee-Mao  thFood:categorizedAs  thFood:noodle;
             thFood:isFrom   thFood:northern ;
             thFood:hasSpicenessLevel "medium" .
-thFood:Pad-Kee-Mao  thFood:noodle;   _:x .           ### E: what is this???
 _:x thFood:alsoCalled   thFood:name "Drunken-Noodles" .
 
 
@@ -95,7 +94,6 @@ thFood:Thai-Red  thFood:categorizedAs  thFood:curry;
 thFood:Khao-Pad  thFood:categorizedAs  thFood:rice;
             thFood:isFrom  thFood:central . 
             thFood:hasSpicenessLevel "mild" .
-thFood:Khao-Pad  thFood:rice;   _:x .               ### E: what is this??? Is it the same blank node as above?
 _:x thFood:alsoCalled   thFood:name "Stir-Fried-Rice" .
 
 thFood:Coconut-Rice  thFood:categorizedAs  thFood:rice;
@@ -117,7 +115,6 @@ thFood:Pad-Kra-Pao  thFood:categorizedAs  thFood:stirFry;
 
 thFood:Pad-Sataw  thFood:categorizedAs  thFood:stirFry;
             thFood:isFrom   thFood:southern .
-thFood:Pad-Kee-Mao  thFood:stirFry;   _:x .         ### E: same as above for the blank nodes
 _:x thFood:alsoCalled   thFood:name "Stir-Fried-Stink-Beans" .
 
 
