@@ -1,0 +1,144 @@
+#Part 1
+
+#a)
+
+# My chosen domain will contain marvel characters, their powers/attributes and relationships
+
+
+
+#b)
+
+BASE <http://example.com/marvel#>
+PREFIX p: <http://attributes.com/>
+PREFIX mcu: <http://www.mcu.org/2008/MCUSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+
+PREFIX marvel: <http://example.com/marvel#>
+prefix rel: <http://www.perceive.net/schemas/relationship/> 
+
+
+#c)
+
+# Classes:
+<Hero> rdf:type rdfs:Class;
+       rdfs:lable "Hero" .
+
+<Villain> rdf:type rdfs:Class;
+          rdfs:lable " Villain" .
+
+<Character> rdf:type rdfs:Class;
+            rdfs:lable "Character" .
+
+
+# Properties:
+<hasPower> rdf:type rdfs:Property .
+
+<friendsWith> rdf:type rdfs:Property .
+
+<nameIs> rdf:type rdfs:Property .
+
+<hasChildren> rdf:type rdfs:Property .
+
+<archenemyIs> rdf:type rdfs:Property .
+
+
+
+#d) 
+
+
+mcu:hasPower rdfs:subPropertyOf mcu:strengthIs .
+
+mcu:Mutant rdfs:subClassOf mcu:Human .
+
+mcu:hasPower rdfs:domain mcu:Character;
+             rdfs:range mcu:Power .
+
+# specifies the power possessed by a character
+
+
+
+#e)
+
+#@PREFIX p: <http://attributes.com/>
+
+
+<iron-man> <strengthIs> p:intelligence ;
+           rdf:type <hero> ;
+           <hasName>   "Tony Stark"^^mcu:string ;
+           rel:friendsWith  <black-widow> .
+
+<iron-man> rdf:type <human> ;
+           <isEnhanced> false ;
+           rdf:type <hero> ;
+           <birthdate> "29-05-1970"^^mcu:date .
+
+<hulk> <hasPower> p:invulnerability ;
+       rdf:type <human> ;
+       rdf:type <hero> ;
+       <isEnhanced> true .
+
+<hulk> <hasName> "Bruce Banner"^^mcu:string ;
+       <birthdate> "18-12-1969"^^mcu:date . 
+
+<captain-america> rel:friendsWith <falcon> ;
+                  <hasName> "Steve Rogers"^^mcu:string ;
+                  rdf:type <human> ;
+                  <isEnhanced> true ;
+                  <birthdate> "04-07-1920"^^mcu:date .
+
+
+<black-widow> <hasName> "Natasha Romanoff"^^mcu:string ;
+              <isEnhanced> false ;
+              <birthdate> "03-12-1984"^^mcu:date .
+
+<thor> rel:archenemyIs <loki> ;
+       <hasName> "Thor"^^mcu:string ;
+       <birthdate> "964 A.D."^^mcu:date .
+
+<spider-man> rdf:type <human> ;
+             <hasName> "Peter Parker"^^mcu:string ;
+             <isEnhanced> true ;
+             <birthdate> "10-08-2001"^^mcu:date .
+
+<scarlet-witch> rel:hasChildren _:children .
+_:children <child1> p:speed ;
+           <child2> p:wiccan .
+
+<scarlet-witch> <hasName> "Wanda Maximoff"^^mcu:string ;
+                <isEnhanced> true ;
+                <birthdate> "10-02-1989"^^mcu:date .
+
+<scarlet-witch> <hasPower> p:reality-warper .
+p:reality-warper <consistsOf> _:attributes .
+_:attributes <example1> p:telekinesis ;
+             <example2> p:energy-manipulation ;
+             <example3> p:time-manipulation .
+
+<quick-silver> rdf:type <mutant> ;
+               <hasName> "Pietro Maximoff"^^mcu:string ;
+               <isEnhanced> true ;
+               <birthdate> "10-02-1989"^^mcu:date .
+
+<wolverine> rdf:type <mutant> ,
+                     <human> .
+<wolverine> <hasName> "Logan"^^mcu:string ;
+            <isEnhanced> true ;
+            <birthdate> "12-10-1932"^^mcu:date .
+
+<hawkeye> <hasName> "Clint Barton"^^mcu:string .
+<hawkeye> <hasNoPowers> _:a .
+_:a <strengthIs> p:archery .
+<hawkeye> <isEnhanced> false ;
+          rdf:type <human> ;
+          <age> "18-06-1973"^^mcu:date .
+
+<storm> <isHero> true ;
+        <hasName> "Ororo Munroe"^^mcu:string ;
+        <isEnhanced> true ;
+        <age> "23-12-1975"^^mcu:date .
+
+<thanos> <isVillain> true ;
+         <hasName> "Thanos"^^mcu:string ;
+         <birthdate> "13-11-1972"^^mcu:date . 
+
