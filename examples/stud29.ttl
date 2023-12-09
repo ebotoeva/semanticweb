@@ -1,0 +1,79 @@
+prefix info: <https:example.org/>
+prefix rdf: <https://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+info:Team rdf:type rdfs:Class.
+info:Player rdf:type rdfs:Class.
+info:League rdf:type rdfs:Class.
+info:Country rdf:type rdfs:Class.
+info:PLTeam rdf:type rdfs:Class;
+	rdfs:subClassOf info:Team.
+
+info:plays_for rdf:type rdf:Property;
+	rdfs:domain info:Player;
+	rdfs:range info:Team.
+info:is_held_in rdf:type rdf:Property;
+	rdfs:domain info:League;
+	rdfs:range info:Country.
+info:plays_in rdf:type rdf:Property;
+	rdfs:domain info:Team;
+	rdfs:range info:League.
+
+info:dob rdf:type rdf:Property.
+info:name rdf:type rdf:Property.
+info:yellowCards rdf:type rdf:Property.
+info:redCards rdf:type rdf:Property.
+info:minutesPlayed rdf:type rdf:Property.
+
+
+info:UnitedKingdom rdf:type info:Country.
+info:PremierLeague rdf:type info:League;
+	info:is_held_in info:UnitedKingdom.
+info:Championship rdf:type info:League;
+	info:is_held_in info:UnitedKingdom.
+info:ManchesterUnited rdf:type info:PLTeam;
+	info:hasPlayer _:BF;
+	info:hasPlayer _:MR1;
+	info:hasPlayer _:MR2.
+
+_:MR1 info:scored "77"^^xsd:int;
+	info:assisted "38"^^xsd:int;
+	rdf:type info:Player;
+	info:dob "1997-10-31"^^xsd:date;
+	info:name "MarcusRashford"^^xsd:string;
+	info:redCards "1"^^xsd:int;
+	info:yellowCards "21"^^xsd:int.
+
+_:MR2 info:scored "77"^^xsd:int;
+	info:assisted "38"^^xsd:int;
+	rdf:type info:Player;
+	info:dob "1997-10-31"^^xsd:date;
+	info:name "MarcusRashford"^^xsd:string;
+	info:redCards "1"^^xsd:int;
+	info:yellowCards "21"^^xsd:int.
+	
+_:BF info:scored "47"^^xsd:int;
+	info:assisted "35"^^xsd:int;
+	rdf:type info:Player;
+	info:name "BrunoFernandes"^^xsd:string.
+
+info:Arsenal rdf:type info:Team;
+	rdf:type info:PLTeam;
+	info:hasPlayer _:BS;
+	info:hasPlayer _:WS.
+
+_:WS info:scored "2"^^xsd:int;
+	info:assisted "2"^^xsd:int;
+	rdf:type info:Player;
+	info:dob "2001-03-24"^^xsd:date;
+	info:minutesPlayed "340"^^xsd:int;
+	info:name "WilliamSaliba"^^xsd:string.
+
+_:BS info:scored "35"^^xsd:int;
+	info:assisted "30"^^xsd:int;
+	rdf:type info:Player;
+	info:name "BukayoSaka"^^xsd:string;
+	info:redCards "0"^^xsd:int;
+	info:yellowCards "20"^^xsd:int.
+
