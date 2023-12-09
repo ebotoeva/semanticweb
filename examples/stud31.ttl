@@ -1,0 +1,103 @@
+# The domain that I've chosen to model is related to the film saga 'Star Wars'.
+# This Turtle document will consist of information relating to the characters that are a part of the 'Star Wars'
+# movie and some general details about them and their roles in the film.
+
+@prefix sw: <http://www.starwarscharacters.co.uk/#> .
+@prefix bg: <http://www.starwarsfacts.co.uk/#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-Schema#> .
+sw:Character rdf:type rdfs:Class ;
+             rdfs:subClassOf sw:filmCast .
+bg:filmCast rdf:type rdfs:Class .
+sw:isSonOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isFatherOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isWifeOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isHusbandOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isFriendsWith rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isEnemyOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isBrotherOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isSisterOf rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range sw:starWarsRole .
+sw:isA rdf:type rdf:Property ;
+           rdfs:domain sw:starWarsRole ;
+           rdfs:range bg:characterType .
+           
+
+bg:Jedi sw:is_a bg:Star_Wars_character_type  .		  #Jedi is a Star Wars character type.
+bg:Rebel sw:is_a bg:Star_Wars_character_type  .		  #Rebel is a Star Wars character type.
+bg:Robot sw:is_a bg:Star_Wars_character_type  .		  #Robot is a Star Wars character type.
+sw:C-3PO sw:is_a bg:robot  .				  #C-3PO is a robot.
+sw:C-3PO sw:is_friends_with sw:Luke_Skywalker  .	  #C-3PO is friends with Luke Skywalker.
+sw:C-3PO sw:is_friends_with sw:R2-D2  .			  #C-3PO is friends with R2-D2.
+sw:Chewbacca sw:is_a bg:rebel  .			  #Chewbacca is a rebel.
+sw:Chewbacca sw:is_friends_with  sw:Han_Solo  .		  #Chewbacca is friends with Han Solo.
+sw:Chewbacca sw:is_friends_with sw:Luke_Skywalker  .	  #Chewbacca is friends with Luke Skywalker.
+sw:Darth_Vader sw:is_enemy_of  sw:Luke_Skywalker  .	  #Darth Vader is enemy of Luke Skywalker.
+sw:Darth_Vader sw:is_father_of sw:Luke_Skywalker  .	  #Darth Vader is father of Luke Skywalker.
+sw:Han_Solo sw:is_a bg:rebel  .				  #Han Solo is a rebel.
+sw:Han_Solo sw:is_friends_with sw:Chewbacca  .		  #Han Solo is friends with Chewbacca.
+sw:Han_Solo sw:is_friends_with sw:Luke_Skywalker  .	  #Han Solo is friends with Luke Skywalker.
+sw:Han_Solo sw:is_husband_of sw:Princess_Leia  .	  #Han Solo is husband of Princess Leia.
+sw:Luke_Skywalker sw:is_a bg:Jedi  .			  #Luke Skywalker is a Jedi.
+sw:Luke_Skywalker sw:is_brother_of sw:Princess_Leia  .	  #Luke Skywalker is brother of Princess Leia.
+sw:Luke_Skywalker sw:is_enemy_of sw:Darth_Vader  .	  #Luke Skywalker is enemy of Darth Vader.
+sw:Luke_Skywalker sw:is_friends_with sw:C-3PO  .	  #Luke Skywalker is friends with C-3PO.
+sw:Luke_Skywalker sw:is_friends_with sw:Chewbacca  .	  #Luke Skywalker is friends with Chewbacca.
+sw:Luke_Skywalker sw:is_friends_with sw:Han_Solo  .	  #Luke Skywalker is friends with Han Solo.
+sw:Luke_Skywalker sw:is_friends_with sw:R2-D2  .	  #Luke Skywalker is friends with R2-D2.
+sw:Luke_Skywalker sw:is_son_of sw:Darth_Vader  .	  #Luke Skywalker is son of Darth Vader.
+sw:Princess_Leia bg:is_sister_of sw:Luke_Skywalker  .	  #Princess Leia is sister of Luke Skywalker.
+sw:Princess_Leia sw:is_friends_with sw:R2-D2  .           #Princess Leia is friends with R2-D2.
+sw:Princess_Leia sw:is_wife_of sw:Han_Solo  .		  #Princess Leia is wife of Han Solo.
+sw:R2-D2  sw:is_friends_with sw:C-3PO  .		  #R2-D2 is friends with C-3PO.
+sw:R2-D2 sw:is_a bg:robot  .				  #R2-D2 is a robot.
+sw:R2-D2 sw:is_friends_with sw:Luke_Skywalker  .	  #R2-D2 is friends with Luke Skywalker.
+sw:R2-D2 sw:is_friends_with sw:Princess_Leia  .		  #R2-D2 is friends with Princess Leia.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
