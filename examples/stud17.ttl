@@ -1,0 +1,561 @@
+BASE <https://LOTR-canon.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX Vocab: <https://LOTR-canon.org/Vocabulary#>
+#this best catagorises the Races in LOTR and provides some characters to be part of it.
+#after working on this a while, i realised i prioritised the classes and not literal data.
+
+#DISCLAIMERS:
+#i have centered the birthdate or death around the third age being 0 years
+#not everyhing is 100% correct or canon lol, but i tried.
+
+# properties
+Vocab:Descendant rdfs:Type rdfs:property.
+
+Vocab:descended-from rdfs:Type rdfs:property.
+
+Vocab:created rdfs:Type rdfs:property.
+
+Vocab:Currupted rdfs:subPropertyOf rdfs:created.
+
+<Melkor> Vocab:Currupted <Nauglath>, <Sauron>, <Balrog>, <Baldog>.
+<Souron> Vocab:Currupted <Nauglath>, <Orcs>, <Nazgul>, <Saruman-the-White>.
+
+# character properties
+
+Vocab:race rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:BirthDate rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+#lol i have to say life age, since lotr uses "ages" to seperate. eras;
+    
+Vocab:LifeAge rdfs:Type rdfs:property;
+rdfs:domain Vocab:Character.
+
+
+Vocab:KillCount rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:DeathCount rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:Revived rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:FellowshipOfTheRing rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:Army-soldiers rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+Vocab:Title rdfs:Type rdfs:property;
+    rdfs:domain Vocab:Character.
+
+
+
+
+
+
+
+#classes
+
+Vocab:Character rdfs:type rdfs:Class ;
+    # rdfs:domain Vocab:Character;
+    # rdfs:range Vocab:KillCount;
+    rdfs:label "Character" .
+
+#deities
+
+Vocab:Deity rdfs:type rdfs:Class ;
+    rdfs:label "Deity" .
+
+
+Vocab:God rdfs:type rdfs:Class ;
+    rdfs:range Vocab:Deity;
+    rdfs:label "God" .
+
+
+Vocab:Lower-God rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:God;
+    rdfs:label "Lower-God" .
+
+Vocab:Angel rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:Lower-God;
+    rdfs:label "Angel" .
+
+
+
+#creatures
+Vocab:Creature rdfs:type rdfs:Class ;
+    rdfs:label "Creature" .
+
+Vocab:Man rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:Creature;
+    rdfs:label "Man" .
+
+Vocab:Hobbit rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:Man;
+    rdfs:subClassOf Vocab:Creature;
+    rdfs:label "Hobbit" .
+
+Vocab:Elves rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:Creature;
+    rdfs:label "Elves" .
+
+Vocab:Dwarves rdfs:type rdfs:Class ;
+    rdfs:subClassOf Vocab:Creature;
+    rdfs:label "Dwarves" .
+
+# Eru-Illuvator
+<Eru-Illuvator> Vocab:created <Arda>, <Ea>, <Ainur>, <Children-of-Illuvator>, <Kelvar>, <Olvar>;
+    rdfs:subClassOf Vocab:God;
+    rdf:type Vocab:Character.
+# Ea
+<Ea> <contains> <Arda>.
+# Arda
+<Arda> <IsIn> <Ea>.
+
+
+# Ainur
+<Ainur> rdfs:subClassOf Vocab:Lower-God.
+<Valar> rdfs:subClassOf <Ainur>.
+<Aratar> rdfs:subClassOf  <Valar>.
+
+<Manwë> rdf:type  <Aratar>;
+    Vocab:created <Gandalf-the-Gray>, <Eönwë> .
+
+<Varda> rdf:type  <Aratar>;
+    Vocab:created <Gandalf-the-Gray>, <Ilmarë>.
+
+<Ulmo> rdf:type  <Aratar>;
+    Vocab:created <Ossë>, <Uinen>, <Salmar>, <Uin>.
+
+<Yavanna> rdf:type  <Aratar>;
+    Vocab:created <Trees>, <Radagast-the-Brown>, <Melian>.
+
+<Aulë> rdf:type  <Aratar>;
+    Vocab:created Vocab:Dwarves, <Sauron>, <Saruman>.
+
+<Mandos> rdf:type  <Aratar>.
+<Nienna> rdf:type  <Aratar>.
+
+<Oromë> rdf:type  <Aratar>;
+    Vocab:created <Tilion>, <Alatar>, <Pallando>.
+
+<Tulkas> rdf:type <Valar>.
+
+# Maiar
+<Maiar> rdfs:subClassOf Vocab:Angel.
+
+<Eönwë> rdf:type <Maiar>.
+<Ilmarë> rdf:type <Maiar>.
+<Ossë> rdf:type <Maiar>.
+<Uinen> rdf:type <Maiar>.
+<Salmar> rdf:type <Maiar>.
+<Uin> rdf:type <Maiar>.
+<Melian> rdf:type <Maiar>.
+<Tilion> rdf:type <Maiar>.
+
+
+# Dwarves
+Vocab:Dwarves Vocab:Descendant <Nauglath>.
+<Nauglath> rdfs:subClassOf  Vocab:Dwarves;
+    Vocab:descended-from Vocab:Dwarves;
+    Vocab:Descendant <Petty-Dwarves>.
+
+<Petty-Dwarves> rdfs:subClassOf  <Nauglath>;
+    Vocab:descended-from Vocab:Dwarves.
+
+# Dwarve characters
+<Gimli> rdf:type Vocab:Dwarves;
+    rdf:type Vocab:Character;
+    rdfs:label "Gimli";
+    Vocab:BirthDate "2879";
+    Vocab:DeathDate "Unknown";
+    Vocab:LifeAge 262;
+    Vocab:KillCount 600;
+    Vocab:DeathCount 0;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 20000;
+    Vocab:Title [ <Lord> "Lord of the Glittering Caves"; ].
+
+<Thorin-II> rdf:type Vocab:Dwarves;
+    rdf:type Vocab:Character;
+    rdfs:label "Thorin";
+    Vocab:BirthDate "2746";
+    Vocab:DeathDate "23-11-2941";
+    Vocab:LifeAge 195;
+    Vocab:KillCount 1000;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 20000;
+    Vocab:Title [ <King> "King of Durin's Folk"; 
+    <King> "King under the Mountain"; ].
+
+# Maiar
+<Ainur> Vocab:created <Maiar>, <Great-Eagle>, <Hourn>, <Ent>.
+
+# The-Order-Of-Wizards
+<Valar> Vocab:created <The-Order-Of-Wizards>.
+
+<The-Order-Of-Wizards> rdfs:subClassOf <Maiar>.
+<Gandalf-the-Gray> rdf:type <The-Order-Of-Wizards>.
+<Saruman-the-White> rdf:type <The-Order-Of-Wizards>.
+<Radagast-the-Brown> rdf:type <The-Order-Of-Wizards>.
+<Alatar> rdf:type <The-Order-Of-Wizards>.
+<Pallando> rdf:type <The-Order-Of-Wizards>.
+
+<Gandalf-the-Gray> rdf:type Vocab:Character;
+    rdfs:label "Gandalf";
+    Vocab:BirthDate "-7000";
+    Vocab:DeathDate "Immortal";
+    Vocab:LifeAge 10000;
+    Vocab:KillCount 100;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 9;
+    Vocab:Title [ <Gaurdian> "Guardian of the Third Age"; 
+    <Wizard> "Istar (Wizard)"; 
+    <Master> "The Grey"; 
+    <Master> "The White"; 
+    <Master> "Servant of the Secret Fire"; 
+    <Weilder> "Wielder of the Flame of Anor"].
+
+<Saruman-the-White> rdf:type Vocab:Character;
+    rdfs:label "Saruman";
+    Vocab:BirthDate "-7000";
+    Vocab:DeathDate "03-11-3019";
+    Vocab:LifeAge 10000;
+    Vocab:KillCount 100000;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 11000;
+    Vocab:Title [ <Lord> "Lord of Isengard"; 
+    <Wizard> "Istar (Wizard)"; 
+    <Master> "The White Wizard"; 
+    <Council> "Head of the White Council";  
+    <Boss> "The Boss (to the Ruffians in the Battle of Bywater)"].
+
+
+
+
+
+# Children-of-Illuvator
+<Children-of-Illuvator> <contains> Vocab:Elves, Vocab:Man.
+
+# Man
+Vocab:Man Vocab:Descendant Vocab:Hobbit, <Beornings>, <Druedain>, <Peredhil>, <Kings-of-Numenor>;
+    <Curruption> <Nazgul>, <Orcs>.
+
+# characters of Man
+<Aragorn-II> rdf:type Vocab:Man;
+    rdf:type Vocab:Character;
+    rdfs:label "Aragorn";
+    Vocab:BirthDate "01-03-2931";
+    Vocab:DeathDate "Unknown";
+    Vocab:LifeAge 210;
+    Vocab:KillCount 600;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 10000;
+    Vocab:Title [ <King> "King of Arnor"; 
+    <King> "King of Gondor"; 
+    <King> "High King of the Dúnedain"; 
+    <Chieftain> "Chieftain of the Dúnedain"].
+
+
+<Boromir> rdf:type Vocab:Man;
+    rdf:type Vocab:Character;
+    rdfs:label "Boromir";
+    Vocab:BirthDate "2978";
+    Vocab:DeathDate "26-02-3019";
+    Vocab:LifeAge 41;
+    Vocab:KillCount 300;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 500;
+    Vocab:Title [ <Captain> "Captain of the White Tower"; 
+    <Captain> "Captain-General"; 
+    <Warden> "High Warden of the White Tower"].
+
+<Faramir> rdf:type Vocab:Man;
+    rdf:type Vocab:Character;
+    rdfs:label "Faramir";
+    Vocab:BirthDate "2983";
+    Vocab:DeathDate "26-02-3100";
+    Vocab:LifeAge 120;
+    Vocab:KillCount 500;
+    Vocab:DeathCount 2;
+    Vocab:Revived true;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 2000;
+    Vocab:Title [ <Prince> "Prince of Ithilien";
+    <Lord> "Lord of Emyn Arnen";
+    <Captain> "Captain of the White Tower"; 
+    <Captain> "Captain of the Rangers of Ithilien"; 
+    <Steward> "Steward of Gondor"].
+
+<Théoden> rdf:type Vocab:Man;
+    rdf:type Vocab:Character;
+    rdfs:label "Théoden";
+    Vocab:BirthDate "2948";
+    Vocab:DeathDate "15-03-3019";
+    Vocab:LifeAge 71;
+    Vocab:KillCount 1000;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 7000;
+    Vocab:Title [ <King> "King of Rohan";
+    <Lord> "Lord of the Mark";].
+
+<Frodo> rdf:type Vocab:Hobbit;
+    rdf:type Vocab:Character;
+    rdfs:label "Frodo";
+    Vocab:BirthDate "22-09-2978";
+    Vocab:DeathDate "Uknown";
+    Vocab:LifeAge 43;
+    Vocab:KillCount 150;
+    Vocab:DeathCount 1;
+    Vocab:Revived true;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 2;
+    Vocab:Title [ <Bearer> "Bearer of the One Ring";
+    <Deputy> "Deputy Mayor of Michel Delving";
+    ].
+
+<Samwise> rdf:type Vocab:Hobbit;
+    rdf:type Vocab:Character;
+    rdfs:label "Samwise";
+    Vocab:BirthDate "06-04-2980";
+    Vocab:DeathDate "Uknown";
+    Vocab:LifeAge 102;
+    Vocab:KillCount 100;
+    Vocab:DeathCount 0;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 2;
+    Vocab:Title [ <Bearer> "Freind of the Bearer of the One Ring";
+    <Mayor> "Mayor of Michel Delving";
+    <Freind-Level> "THE top level";].
+
+<Peregrin> rdf:type Vocab:Hobbit;
+    rdf:type Vocab:Character;
+    rdfs:label "Pippin";
+    Vocab:BirthDate "Spring-2990";
+    Vocab:DeathDate "3080";
+    Vocab:LifeAge 94;
+    Vocab:KillCount 200;
+    Vocab:DeathCount 2;
+    Vocab:Revived true;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 2;
+    Vocab:Title [ <Kight> "Knight of Gondor";
+    <Guard> "Guard of the Citadel";
+    <Thain> "Thain of the Shire";].
+
+<Meriadoc> rdf:type Vocab:Hobbit;
+    rdf:type Vocab:Character;
+    rdfs:label "Merry";
+    Vocab:BirthDate "2982";
+    Vocab:DeathDate "3080";
+    Vocab:LifeAge 120;
+    Vocab:KillCount 300;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 2;
+    Vocab:Title [ <Kight> "Knight of Rohan";
+    <Master> "Master of Buckland";].
+
+
+# Peredhil
+<Peredhil> Vocab:Descendant <Kings-of-Numenor>.
+
+# Kings-of-Numenor
+<Kings-of-Numenor> <Curruption> <Nazgul>.
+<Nazgul> <Curruption-From> <Kings-of-Numenor>.
+
+# Nazgul
+<Witch-king-of-Angmar> rdf:type <Nazgul>.
+<Khamûl-the-Easterling> rdf:type <Nazgul>.
+<Nazgul-3> rdf:type <Nazgul>.
+<Nazgul-4> rdf:type <Nazgul>.
+<Nazgul-5> rdf:type <Nazgul>.
+<Nazgul-6> rdf:type <Nazgul>.
+<Nazgul-7> rdf:type <Nazgul>.
+<Nazgul-8> rdf:type <Nazgul>.
+<Nazgul-9> rdf:type <Nazgul>.
+
+# Elves
+Vocab:Elves Vocab:Descendant <Peredil>, <Kings-of-Numenor>.
+
+Vocab:Elves <Curruption> <Orcs>.
+
+<Legolas> rdf:type Vocab:Elves;
+    rdf:type Vocab:Character;
+    rdfs:label "Legolas";
+    Vocab:BirthDate "0087";
+    Vocab:DeathDate "Uknown";
+    Vocab:LifeAge 2931;
+    Vocab:KillCount 2000;
+    Vocab:DeathCount 0;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing true;
+    Vocab:Army-soldiers 1;
+    Vocab:Title [ <Prince> "Prince of the Woodland Realm";].
+
+<Elrond> rdf:type Vocab:Elves;
+    rdf:type Vocab:Character;
+    rdfs:label "Elrond";
+    Vocab:BirthDate "-3499";
+    Vocab:DeathDate "Uknown";
+    Vocab:LifeAge 6521;
+    Vocab:KillCount 2000;
+    Vocab:DeathCount 0;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 5000;
+    Vocab:Title [<Bearer> "Bearer of Vilya";     
+    <Lord> "Lord of Rivendell";
+    <Regent> "Vice-regent and herald to Gil-galad"].
+
+<Haldir> rdf:type Vocab:Elves;
+    rdf:type Vocab:Character;
+    rdfs:label "Haldir";
+    Vocab:BirthDate "Uknown";
+    Vocab:DeathDate "Uknown";
+    Vocab:LifeAge "Uknown";
+    Vocab:KillCount 3000;
+    Vocab:DeathCount 1;
+    Vocab:Revived false;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 500;
+    Vocab:Title [<Ranger> "Marchwarden of Lothlórien";].
+
+
+# Melkor
+<Melkor> Vocab:Currupted <Sauron>, <Balrog>, <Baldog>;
+    Vocab:created <Olog>, <Vampires>, <Dragons>;
+    rdf:type <Ainur>;
+    rdf:type Vocab:Character;
+    rdfs:label "Morgoth";
+    Vocab:BirthDate "-8000";
+    Vocab:DeathDate "Immortal";
+    Vocab:LifeAge 11000;
+    Vocab:KillCount 100000000;
+    Vocab:DeathCount 0;
+    Vocab:Revived true;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 1700000;
+    Vocab:Title [<Lord> "Dark Lord";
+    <Lord> "Lord of the Dark";
+    <King> "King of the World";
+    <King> "Elder King";
+    <Master> "Master of the Fates of Arda";].
+
+
+
+
+
+
+<Balrog> rdfs:subClassOf <Maiar>.
+<Baldog> rdfs:subClassOf <Maiar>.
+
+<Shadow-Flame> rdf:type <Balrog>.
+<Gothmog> rdf:type <Balrog>.
+
+<Thuringwethil> rdf:type <Vampires>.
+
+# Trolls
+<Hill-Trolls> rdfs:subClassOf <Olog>.
+<Cave-Trolls> rdfs:subClassOf <Olog>.
+<Mountain-Trolls> rdfs:subClassOf <Olog>.
+<Snow-Trolls> rdfs:subClassOf <Olog>.
+<Half-Trolls> rdfs:subClassOf <Olog>.
+<Internet-Trolls> rdfs:subClassOf <Olog>.
+
+<Sauron> Vocab:created <Olog-Hai>.
+<Olog-Hai> rdfs:subClassOf <Olog>.
+
+
+# Sauron
+<Sauron> Vocab:Currupted <Nazgul>;
+    rdf:type <Maiar>;
+    rdf:type Vocab:Character;
+    rdfs:label "Sauron";
+    Vocab:BirthDate "-7000";
+    Vocab:DeathDate "Immortal";
+    Vocab:LifeAge 10000;
+    Vocab:KillCount 1000000;
+    Vocab:DeathCount 3;
+    Vocab:Revived true;
+    Vocab:FellowshipOfTheRing false;
+    Vocab:Army-soldiers 150000;
+    Vocab:Title [<Lord> "Dark Lord";
+    <Lord> "Second Dark Lord";
+    <Dark> "The Dark Power";
+    <Black> "Black One";
+    <Black> "Black Hand";
+
+    <Master> "Black Master";
+    <Master> "The Base Master of Treachery";
+    <Master> "The Deceiver";
+
+    <Devil> "The Devil";
+    <Sorcerer> "The Sorcerer";
+    <Necromancer> "The Necromancer";
+
+    <Master> "The Nameless";
+    <Master> "The Unnamed";
+    <Master> "The Shadow";
+    <Master> "The Ring-maker";
+
+    <Lord> "The Lord of the Rings"; # * quee the fellowship theme *
+    <Lord> "The Lord of Barad-dûr";
+    <Lord> "The Lord of Mordor";
+    <Lord> "The Lord of the Earth";
+
+    <Master> "The Ruler";
+
+    <King> "King of Men";
+    <King> "King of Kings";
+    <King> "The King";
+    
+    ].
+
+# Orcs
+<Orcs> Vocab:descended-from Vocab:Elves, Vocab:Man.
+<Melkor> Vocab:Currupted <Orcs>.
+
+<Goblins> rdfs:subClassOf <Orcs>.
+<black-Orcs> rdfs:subClassOf <Orcs>.
+<Morannon-Orcs> rdfs:subClassOf <black-Orcs>.
+<Half-Orc> rdfs:subClassOf <Orcs>.
+
+<Goblins> rdfs:subClassOf <Orcs>.
+<Goblins> Vocab:Descendant <Moria-Orcs>.
+<Moria-Orcs> rdfs:subClassOf <Goblins>.
+<Goblins> Vocab:descended-from <Moria-Orcs>.
+
+
+<Goblins> rdfs:subClassOf <Orcs>.
+
+<Saruman> Vocab:created <black-Orcs>.
+# Kelvar
+<Kelvar> <contains> <Eagles>,<Wolves>.
+<Eagles> Vocab:Descendant <Great-Eagle>.
+<Valar> Vocab:created <Great-Eagle>.
+
+# Olvar
+<Olvar> <contains> <Trees>.
+<Trees> Vocab:Descendant <Hourn>.
